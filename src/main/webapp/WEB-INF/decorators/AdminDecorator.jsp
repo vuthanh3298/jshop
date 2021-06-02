@@ -12,29 +12,32 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Admin</title>
-<link rel="stylesheet" href="<c:url value="/resources/templates/admin/main.css" />" />
-<script src="<c:url value="/resources/templates/admin/jquery-1.12.4.min.js" />"></script>	
-
+<link rel="stylesheet"
+	href="<c:url value="/resources/templates/admin/main.css" />" />
+<script
+	src="<c:url value="/resources/templates/admin/jquery-1.12.4.min.js" />"></script>
 </head>
 
 <body>
-    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-    	<%-- <%@ include file="../common/admin/header.jsp"%> --%>
-	    <div class="app-main">
-	    	<%@ include file="../common/admin/menu.jsp"%>
-	    	<div class="app-main__outer">
-	                <div class="app-main__inner">
-	                    <div class="app-page-title">
-	                        <div class="page-title-wrapper">
-	                       	 	<sitemesh:write property="body" />
-	                        </div>
-	                    </div>
-	                 </div>
-	        </div>
-	    </div>
-	    <%@ include file="../common/admin/footer.jsp"%>
-    </div>
-	<script type="text/javascript" src="<c:url value="/resources/templates/admin/main.js" />"></script>
+	<div
+		class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+		<%-- <%@ include file="../common/admin/header.jsp"%>  --%>
+		<div class="app-main" style="padding-top: 0px;">
+			<%@ include file="../common/admin/menu.jsp"%>
+			<div class="app-main__outer">
+				<div class="app-main__inner">
+					<div class="">
+						<div class="page-title-wrapper">
+							<sitemesh:write property="body" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%@ include file="../common/admin/footer.jsp"%>
+	</div>
+	<script type="text/javascript"
+		src="<c:url value="/resources/templates/admin/main.js" />"></script>
 </body>
 
 </html>

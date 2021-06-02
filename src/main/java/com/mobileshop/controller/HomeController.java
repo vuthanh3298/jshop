@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mobileshop.model.UsersModel;
-import com.mobileshop.service.UsersService;
+import com.mobileshop.model.UserModel;
+import com.mobileshop.service.UserService;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
-	UsersService usersService;
+	UserService userService;
 
 	@RequestMapping(value="/")
 	public String test(HttpServletResponse response) throws IOException{
@@ -30,7 +30,8 @@ public class HomeController {
 	@ResponseBody
 	public ResponseEntity<?> getAll() {
 		try {
-			return ResponseEntity.ok(usersService.getAll());
+			System.out.println(userService.getAll());
+			return ResponseEntity.ok(userService.getAll());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ResponseEntity.status(500).body(null);
@@ -42,10 +43,9 @@ public class HomeController {
 	@ResponseBody
 	public ResponseEntity<?> getUser(@PathVariable String id) {
 		try {
-			int intId = Integer.parseInt(id);
-			UsersModel user = usersService.getUser(intId);
+			UserModel user = userService.getUser(id);
 			System.out.println(user);
-			return ResponseEntity.ok(new UsersModel(5,"abc", "13"));
+			return ResponseEntity.ok("abc");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return ResponseEntity.status(500).body(null);

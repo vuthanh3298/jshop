@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@include file="../taglib.jsp"%>
         <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-     <div class="app-sidebar sidebar-shadow">
+     <div class="app-sidebar sidebar-shadow "style="margin-top: none;">
                 <div class="app-header__logo">
                     <div class="logo-src"></div>
                     <div class="header__pane ml-auto">
@@ -27,7 +27,6 @@
                     <span>
                             <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
                                 <span class="btn-icon-wrapper">
-                                    <i class="fa fa-ellipsis-v fa-w-6"></i>
                                 </span>
                     </button>
                     </span>
@@ -40,12 +39,12 @@
 							</li>
                             <li>
                                 <a class="mm-active" href='<c:url value="/"/>'>
-			                    <i class="metismenu-icon pe-7s-home"></i> Trang chủ</a>
+			                     Trang chủ</a>
                             </li>
                             <li class="app-sidebar__heading">Chức năng admin</li>
                             <li>
-                                <a href='<c:url value="/admin/cap-nhat-thong-tin"/>'>
-                                    <i class="metismenu-icon pe-7s-id"></i> Quản lý người dùng
+                                <a href='<c:url value="/admin/users"/>'>
+                                    </i> Quản lý người dùng
                                 </a>
                             </li>
                            

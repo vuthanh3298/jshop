@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mobileshop.mapper.UserMapper">
+    <select id="getAll" resultMap="result">
+        SELECT * FROM USER;
+    </select>
+    
+    <select id="getUser" parameterType="String" resultMap="result">
+        SELECT * FROM USER where USER_ID = #{id};
+    </select>
+    
+    <resultMap id = "result" type = "com.mobileshop.model.UserModel">
+       <result property = "userId" column = "USER_ID"/>
+       <result property = "position" column = "POSITION"/>
+       <result property = "name" column = "NAME"/>
+       <result property = "dob" column = "DOB"/>
+       <result property = "gender" column = "GENDER"/>
+       <result property = "addres" column = "ADDRESS"/>
+       <result property = "phoneNumber" column = "PHONE_NUMBER"/>
+       <result property = "email" column = "EMAIL"/>
+       <result property = "note" column = "NOTE"/>
+       <result property = "pass" column = "PASS"/>
+       <result property = "roleId" column = "ROLE_ID"/>
+    </resultMap>
+</mapper>

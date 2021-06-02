@@ -4,12 +4,12 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="UsersModel" type="com.mobileshop.model.UsersModel" />
+		<typeAlias alias="UsersModel" type="com.mobileshop.model.UserModel" />
 	</typeAliases>
 
 
 	<mappers>
-		<mapper resource="com/mobileshop/mapper/sql/Users.xml" />
+		<mapper resource="com/mobileshop/mapper/sql/User.xml" />
 	</mappers>
 
 </configuration>
