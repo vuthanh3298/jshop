@@ -72,7 +72,7 @@ public class AdminController {
 		return "admin/products";
 	}
 
-	@PostMapping("/user")
+	@PostMapping(value = "/user", produces = "application/json;charset=UTF-8")
 	public String saveOrUpdateUser(@ModelAttribute UserModel userModel) {
 		try {
 			userService.saveOrUpdate(userModel);
@@ -93,11 +93,11 @@ public class AdminController {
 		}
 		return "redirect:/admin/products?message=save-success";
 	}
-	
+
 	@PostMapping("/book")
 	public String saveOrUpdateBook(@ModelAttribute BookModel bookModel) {
 		LocalDateTime now = LocalDateTime.now();
-        Timestamp timestamp = Timestamp.valueOf(now);
+		Timestamp timestamp = Timestamp.valueOf(now);
 		bookModel.setTime(timestamp);
 		try {
 			bookService.saveOrUpdateBook(bookModel);
@@ -122,8 +122,6 @@ public class AdminController {
 			modelMap.put("products", products);
 			List<UserModel> users = userService.getAll();
 			modelMap.put("users", users);
-			
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
