@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mobileshop.mapper.UserMapper">
+
     <select id="getAll" resultMap="result">
         SELECT * FROM USER;
     </select>
@@ -10,13 +11,36 @@
         SELECT * FROM USER where USER_ID = #{id};
     </select>
     
+    <insert id="saveOne" parameterType="com.mobileshop.model.UserModel">
+       	INSERT INTO USER (USER_ID, POSITION, NAME, DOB, GENDER, ADDRESS, PHONE_NUMBER, EMAIL, NOTE, ROLE_ID)
+       		VALUES (#{userId}, #{position}, #{name}, #{dob}, #{gender}, #{address}, #{phoneNumber}, #{email}, #{note}, #{roleId})
+    </insert>
+    
+     <update id="updateOne" parameterType="com.mobileshop.model.UserModel">
+     	UPDATE 
+     		USER
+     	SET
+     		POSITION = #{position},
+     		NAME = #{name},
+     		DOB = #{dob},
+     		GENDER = #{gender},
+     		ADDRESS = #{address},
+     		PHONE_NUMBER = #{phoneNumber},
+     		EMAIL = #{email},
+     		NOTE = #{note},
+     		ROLE_ID = #{roleId}
+     	WHERE
+     		USER_ID = #{userId}
+       
+    </update>
+    
     <resultMap id = "result" type = "com.mobileshop.model.UserModel">
        <result property = "userId" column = "USER_ID"/>
        <result property = "position" column = "POSITION"/>
        <result property = "name" column = "NAME"/>
        <result property = "dob" column = "DOB"/>
        <result property = "gender" column = "GENDER"/>
-       <result property = "addres" column = "ADDRESS"/>
+       <result property = "address" column = "ADDRESS"/>
        <result property = "phoneNumber" column = "PHONE_NUMBER"/>
        <result property = "email" column = "EMAIL"/>
        <result property = "note" column = "NOTE"/>

@@ -1,15 +1,15 @@
 package com.mobileshop.model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class UserModel {
 	
 	private String userId;//mã nhân viên
 	private String position;//chức vụ
 	private String name;//họ và tên
-	private Timestamp dob;// ngày tháng năm sinh
+	private Date dob;// ngày tháng năm sinh
 	private Boolean gender;//giới tính
-	private String addres;//địa chỉ
+	private String address;//địa chỉ
 	private String phoneNumber;//số điện thoại
 	private String email;//email
 	private String note;//ghi chú
@@ -20,7 +20,7 @@ public class UserModel {
 	public UserModel() {
 		super();
 	}
-	public UserModel(String userId, String position, String name, Timestamp dob, Boolean gender, String addres,
+	public UserModel(String userId, String position, String name, Date dob, Boolean gender, String address,
 			String phoneNumber, String email, String note, String roleId, String pass) {
 		super();
 		this.userId = userId;
@@ -28,7 +28,7 @@ public class UserModel {
 		this.name = name;
 		this.dob = dob;
 		this.gender = gender;
-		this.addres = addres;
+		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.note = note;
@@ -53,10 +53,10 @@ public class UserModel {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Timestamp getDob() {
+	public Date getDob() {
 		return dob;
 	}
-	public void setDob(Timestamp dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 	public Boolean getGender() {
@@ -65,11 +65,11 @@ public class UserModel {
 	public void setGender(Boolean gender) {
 		this.gender = gender;
 	}
-	public String getAddres() {
-		return addres;
+	public String getAddress() {
+		return address;
 	}
-	public void setAddres(String addres) {
-		this.addres = addres;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -109,7 +109,7 @@ public class UserModel {
 				+ ", name=" + name 
 				+ ", dob=" + dob 
 				+ ", gender=" + gender 
-				+ ", addres=" + addres 
+				+ ", address=" + address 
 				+ ", phoneNumber=" + phoneNumber 
 				+ ", email=" + email 
 				+ ", note=" + note 

@@ -13,16 +13,16 @@
         </head>
 
         <body>
-            <header>
+            <%-- <header>
                 <!-- Header Start -->
                 <div class="header-area">
                     <div class="main-header ">
                         <%@ include file="../common/web/header.jsp"%>
                     </div>
                 </div>
-            </header>
+            </header>--%>
             <sitemesh:write property="body" />
-            <%@ include file="../common/web/footer.jsp"%>
+            <%-- <%@ include file="../common/web/footer.jsp"%>  --%>
                 
         </body>
 

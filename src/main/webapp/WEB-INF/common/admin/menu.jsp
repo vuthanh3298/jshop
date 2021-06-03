@@ -47,6 +47,16 @@
                                     </i> Quản lý người dùng
                                 </a>
                             </li>
+                             <li>
+                                <a href='<c:url value="/admin/products"/>'>
+                                    </i> Quản lý sản phẩm
+                                </a>
+                            </li>
+                            <li>
+                                <a href='<c:url value="/admin/books"/>'>
+                                    </i> Đơn hàng
+                                </a>
+                            </li>
                            
                         </ul>
                     </div>

@@ -3,13 +3,11 @@
 
 <configuration>
 
-	<typeAliases>
-		<typeAlias alias="UsersModel" type="com.mobileshop.model.UserModel" />
-	</typeAliases>
-
-
 	<mappers>
 		<mapper resource="com/mobileshop/mapper/sql/User.xml" />
+		<mapper resource="com/mobileshop/mapper/sql/Product.xml" />
+		<mapper resource="com/mobileshop/mapper/sql/Role.xml" />
+		<mapper resource="com/mobileshop/mapper/sql/Book.xml" />
 	</mappers>
 
 </configuration>

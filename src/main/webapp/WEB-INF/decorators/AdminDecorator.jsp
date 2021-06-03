@@ -16,6 +16,12 @@
 	href="<c:url value="/resources/templates/admin/main.css" />" />
 <script
 	src="<c:url value="/resources/templates/admin/jquery-1.12.4.min.js" />"></script>
+
+<style>
+	.btn-hover {
+		cursor: pointer;
+	}
+</style>
 </head>
 
 <body>
