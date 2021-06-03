@@ -1,6 +1,8 @@
 package com.mobileshop.controller;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.mobileshop.model.BookModel;
 import com.mobileshop.model.BookTableModel;
 import com.mobileshop.model.ProductModel;
 import com.mobileshop.model.RoleModel;
@@ -25,7 +28,7 @@ import com.mobileshop.service.UserService;
 @Controller(value = "HomeControllerAdmin")
 @RequestMapping("/admin")
 public class AdminController {
-	
+
 	@Autowired
 	UserService userService;
 	@Autowired
@@ -34,71 +37,98 @@ public class AdminController {
 	ProductService productService;
 	@Autowired
 	BookService bookService;
-	
-	@RequestMapping(value="/")
-	public String home(HttpServletResponse response) throws IOException{
+
+	@RequestMapping(value = "/")
+	public String home(HttpServletResponse response) throws IOException {
 		return "admin/home";
 	}
-	@RequestMapping(value="/users")
-	public String users(ModelMap modelMap) throws IOException{
+
+	@RequestMapping(value = "/users")
+	public String users(ModelMap modelMap) throws IOException {
 		try {
 			List<RoleModel> roles = roleService.getAll();
 			modelMap.put("roles", roles);
-			
+
 			List<UserModel> users = userService.getAll();
 			modelMap.put("users", users);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "admin/users";
 	}
-	@RequestMapping(value="/products")
-	public String products(ModelMap modelMap) throws IOException{
+
+	@RequestMapping(value = "/products")
+	public String products(ModelMap modelMap) throws IOException {
 		try {
 			List<ProductModel> products = productService.getAll();
 			modelMap.put("products", products);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "admin/products";
 	}
-	
+
 	@PostMapping("/user")
 	public String saveOrUpdateUser(@ModelAttribute UserModel userModel) {
 		try {
-			userService.saveOrUpdate(userModel); 
+			userService.saveOrUpdate(userModel);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "redirect:/admin/users?message=save-fail";
 		}
 		return "redirect:/admin/users?message=save-success";
 	}
-	
-	@GetMapping("/books")
-	public String books(ModelMap modelMap) throws IOException{
+
+	@PostMapping("/product")
+	public String saveOrUpdateProduct(@ModelAttribute ProductModel productModel) {
 		try {
-			
+			productService.saveOrUpdateProduct(productModel);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:/admin/products?message=save-fail";
+		}
+		return "redirect:/admin/products?message=save-success";
+	}
+	
+	@PostMapping("/book")
+	public String saveOrUpdateBook(@ModelAttribute BookModel bookModel) {
+		LocalDateTime now = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(now);
+		bookModel.setTime(timestamp);
+		try {
+			bookService.saveOrUpdateBook(bookModel);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "redirect:/admin/books?message=save-fail";
+		}
+		return "redirect:/admin/books?message=save-success";
+	}
+
+	@GetMapping("/books")
+	public String books(ModelMap modelMap) throws IOException {
+		try {
+
 			/*
 			 * List<BookModel> books = bookService.getAll(); modelMap.put("books", books);
 			 */
-			
-			
+
 			List<BookTableModel> bookTable = bookService.getAllBookTable();
-			System.out.println(bookTable);
 			modelMap.put("bookTable", bookTable);
+			List<ProductModel> products = productService.getAll();
+			modelMap.put("products", products);
+			List<UserModel> users = userService.getAll();
+			modelMap.put("users", users);
 			
 			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "admin/books";
 	}
 }
-
-
-

@@ -73,7 +73,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form action="<c:url value="/admin/user"/>" method="post">
+			<form action="<c:url value="/admin/product"/>" method="post">
 				<div class="modal-body">
 					<div class="form-group row">
 						<label for="courses-name" class="col-sm-3 col-form-label">Mã hàng:</label>
@@ -122,8 +122,8 @@
 					<!-- <div class="form-group row">
 						<label class="col-sm-3 col-form-label">Số lượng hàng tồn</label>// tự cập nhật
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="email"
-								name="email">
+							<input type="text" class="form-control" id="inventory"
+								name="inventory">
 						</div>
 					</div> -->
 					<div class="form-group row">

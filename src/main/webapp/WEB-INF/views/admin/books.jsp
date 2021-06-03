@@ -3,9 +3,10 @@
 <%@include file="../../common/taglib.jsp"%>
 <div>
 	<div style="text-align: right;">
-		<button type="button" class="btn btn-primary add-user"
-			data-toggle="modal" data-target="#addUser"
+		<button type="button" class="btn btn-primary add-book"
+			data-toggle="modal" data-target="#add-book-modal"
 			style="margin-bottom: 2px;">Thêm</button>
+
 	</div>
 	<table class="table table-hover table-bordered table-striped"
 		style="text-align: center; background-color: white;">
@@ -16,7 +17,7 @@
 				<th scope="col">Tên SP</th>
 				<th scope="col">Đơn vị tính</th>
 				<th scope="col">Số lượng</th>
-				<th scope="col">Giá cả</th>
+				<th scope="col">Giá</th>
 				<th scope="col">Đ/c giao hàng</th>
 				<th scope="col">Thời gian </th>
 				<th scope="col">Thành tiền </th>
@@ -38,6 +39,7 @@
 					<th scope="col">${book.address}</th>
 					<th scope="col">${book.time}</th>
 
+					<th scope="col">${book.amount*book.price}</th>
 					<th scope="col">${book.paymentMethods}</th>
 					<th scope="col">${book.note}</th>
 
@@ -64,3 +66,86 @@
 		</tbody>
 	</table>
 </div>
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="add-book-modal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Thêm đơn hàng</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="<c:url value="/admin/book"/>" method="post">
+				<div class="modal-body">
+					<div class="form-group row">
+						<label for="courses-name" class="col-sm-3 col-form-label">Mã SP:</label>
+							<div class="col-sm-9">
+							<select class="form-control" name="productId" id="productId" style="margin-bottom: 0px; float: right;"><!--  position: absolute; float: 0 -->
+	                             <!-- quyền -->
+	                             <c:forEach var="product" items="${products}">
+	                                 <option value="${product.productId}" >${product.productId} - ${product.name}</option>
+	                             </c:forEach>
+	                        
+	                         </select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Người đặt hàng:</label>
+						<div class="col-sm-9">
+							<select class="form-control" name="userId" id="userId" style="margin-bottom: 0px; float: right;"><!--  position: absolute; float: 0 -->
+	                             <!-- quyền -->
+	                             <c:forEach var="user" items="${users}">
+	                                 <option value="${user.userId}" >${user.userId} - ${user.name}</option>
+	                             </c:forEach>
+	                        
+	                         </select>
+						</div>
+					</div>
+					<!-- <div class="form-group row">
+						<label class="col-sm-3 col-form-label">Thời gian đặt hàng:</label> // lấy từ hệ thống
+						<div class="col-sm-9">
+							<input class="form-control form-control-user" id="time" type="text" name="time" />
+						</div>
+					</div> -->
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Số lượng</label>
+						<div class="col-sm-9">
+							<input type="number"  min="1"class="form-control" id="amount"
+								name="amount">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Đ/C giao hàng</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="address"
+								name="address">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Phương thức thanh toán</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="paymentMethods"
+								name="paymentMethods">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Chú thích</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="note"
+								name="note">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Lưu</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Hủy</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+</div>
+

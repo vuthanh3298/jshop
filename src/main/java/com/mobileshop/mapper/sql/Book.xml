@@ -9,7 +9,27 @@
     <select id="getAllBookTable" resultMap="resultTable">
         select b.*,p.NAME, p.UNIT, p.PRICE  from PRODUCT as p, BOOK as b where p.PRODUCT_ID = b.PRODUCT_ID;
     </select>
-    
+    <select id="getBook" resultMap="result" parameterType="map"	>
+        select * from BOOK where PRODUCT_ID = #{productId} and USER_ID=#{userId} and TIME = #{time};
+    </select>
+    <insert id="saveOne" parameterType="com.mobileshop.model.ProductModel">
+    	INSERT INTO BOOK (PRODUCT_ID, USER_ID, TIME, AMOUNT, ADDRESS, PAYMENT_METHODS, NOTE) 
+    	VALUES (#{productId}, #{userId}, #{time}, #{amount}, #{address}, #{paymentMethods}, #{note});
+     </insert>
+     <update id="updateOne" parameterType="com.mobileshop.model.ProductModel">
+     	UPDATE 
+     		BOOK
+     	SET
+     		AMOUNT = #{amount},
+     		ADDRESS = #{address},
+     		PAYMENT_METHODS = #{paymentMethods},
+     		NOTE = #{NOTE}
+     	WHERE
+     		PRODUCT_ID = #{productId},
+     		USER_ID = #{userId},
+     		TIME = #{time}
+     		
+    </update>
     
     <resultMap id = "result" type = "com.mobileshop.model.BookModel">
        <result property = "productId" column = "PRODUCT_ID"/>
