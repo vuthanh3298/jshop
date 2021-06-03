@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mobileshop.model.BookModel;
+import com.mobileshop.model.BookTableModel;
 import com.mobileshop.model.ProductModel;
 import com.mobileshop.model.RoleModel;
 import com.mobileshop.model.UserModel;
@@ -80,8 +80,16 @@ public class AdminController {
 	@RequestMapping(value="/books")
 	public String books(ModelMap modelMap) throws IOException{
 		try {
-			List<BookModel> books = bookService.getAll();
-			modelMap.put("books", books);
+			
+			/*
+			 * List<BookModel> books = bookService.getAll(); modelMap.put("books", books);
+			 */
+			
+			
+			List<BookTableModel> bookTable = bookService.getAllBookTable();
+			System.out.println(bookTable);
+			modelMap.put("bookTable", bookTable);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

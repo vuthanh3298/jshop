@@ -6,6 +6,10 @@
         SELECT * FROM BOOK;
     </select>
     
+    <select id="getAllBookTable" resultMap="resultTable">
+        select b.*,p.NAME, p.UNIT, p.PRICE  from PRODUCT as p, BOOK as b where p.PRODUCT_ID = b.PRODUCT_ID;
+    </select>
+    
     
     <resultMap id = "result" type = "com.mobileshop.model.BookModel">
        <result property = "productId" column = "PRODUCT_ID"/>
@@ -15,5 +19,19 @@
        <result property = "address" column = "ADDRESS"/>
        <result property = "paymentMethods" column = "PAYMENT_METHODS"/>
        <result property = "note" column = "NOTE"/>
+    </resultMap>
+    
+    <resultMap id = "resultTable" type = "com.mobileshop.model.BookTableModel">
+       <result property = "productId" column = "PRODUCT_ID"/>
+       <result property = "userId" column = "USER_ID"/>
+       <result property = "time" column = "TIME"/>
+       <result property = "amount" column = "AMOUNT"/>
+       <result property = "address" column = "ADDRESS"/>
+       <result property = "paymentMethods" column = "PAYMENT_METHODS"/>
+       <result property = "note" column = "NOTE"/>
+       
+       <result property = "name" column = "NAME"/>
+       <result property = "unit" column = "UNIT"/>
+       <result property = "price" column = "PRICE"/>
     </resultMap>
 </mapper>

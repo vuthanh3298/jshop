@@ -26,21 +26,20 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="book" items="${books}">
+			<c:forEach var="book" items="${bookTable}">
 			
 
 				<tr style="font-size: 13px; font-family: thin">
 					<th scope="col">${book.productId}</th>
-					<th scope="col">${book.userId}</th>
-					<th scope="col">${book.time}</th>
+					<th scope="col">${book.name}</th>
+					<th scope="col">${book.unit}</th>
 					<th scope="col">${book.amount}</th>
+					<th scope="col">${book.price}</th>
 					<th scope="col">${book.address}</th>
+					<th scope="col">${book.time}</th>
 
 					<th scope="col">${book.paymentMethods}</th>
 					<th scope="col">${book.note}</th>
-					<th scope="col">a</th>
-					<th scope="col">b</th>
-					<th scope="col">c</th>
 
 					<th>
 						<div style="display: inline-flex;">
