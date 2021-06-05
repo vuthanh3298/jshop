@@ -1,18 +1,22 @@
 package com.mobileshop.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mobileshop.model.ProductModel;
 import com.mobileshop.model.UserModel;
+import com.mobileshop.service.ProductService;
 import com.mobileshop.service.UserService;
 
 @Controller
@@ -20,9 +24,22 @@ public class HomeController {
 	
 	@Autowired
 	UserService userService;
+	@Autowired
+	ProductService productService;
 
-	@RequestMapping(value="/")
-	public String test(HttpServletResponse response) throws IOException{
+	@RequestMapping(value = "/")
+	public String home(ModelMap modelMap) throws IOException {
+		try {
+			Object productsHot = productService.selectTopList();
+	    	modelMap.addAttribute("productsHot", productsHot);
+			
+			List<ProductModel> productsNew = productService.getAll();
+			modelMap.put("productsNew", productsNew);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return "home/home";
 	}
 	
@@ -68,6 +85,14 @@ public class HomeController {
 	@RequestMapping(value="/manufacturer")
 	public String productManufacturer(HttpServletResponse response) throws IOException{
 		return "home/ListProduct";
+	}
+	@RequestMapping(value="/cart")
+	public String cart(HttpServletResponse response) throws IOException{
+		return "home/Cart";
+	}
+	@RequestMapping(value="/purchase-order")
+	public String purchaseOrder(HttpServletResponse response) throws IOException{
+		return "home/purchaseOrder";
 	}
 }
 

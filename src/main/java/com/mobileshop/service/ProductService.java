@@ -1,5 +1,6 @@
 package com.mobileshop.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,40 @@ public class ProductService {
 	public ProductModel getProduct(String id) throws Exception {
 		return productMapper.getProduct(id);
 	}
+	public List<Object> selectTopList() throws Exception{
+	 	List<Object> productModelHot = new ArrayList<Object>();// = baiDangService.selectTop4DuAn();
+		List<ProductModel>productModelDANB = productMapper.getAll();;
+		List<ProductModel> productModelSmall = new ArrayList<ProductModel>();
+		int i=0;
+    	for (ProductModel baidang : productModelDANB) {
+    		if(i<4) {
+    			
+    			productModelSmall.add(baidang);
+    			i++;
+    		}else {
+    			productModelHot.add(new ArrayList<ProductModel>(productModelSmall));
+    			i=0;
+    			
+    			productModelSmall.clear();
+    		}
+    		
+		}
+    	productModelHot.add(productModelSmall);
+		return productModelHot;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@Transactional(rollbackFor = Exception.class)
 	public void saveOrUpdateProduct(ProductModel productModel) throws Exception {
