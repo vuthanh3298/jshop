@@ -24,14 +24,7 @@ public class HomeController {
 
 	@RequestMapping(value="/")
 	public String test(HttpServletResponse response) throws IOException{
-		System.out.println(EncodedPasswordUtil.encode("123"));
-		return "home";
-	}
-	
-	@RequestMapping(value="/403")
-	public String error(HttpServletResponse response) throws IOException{
-		System.out.println(EncodedPasswordUtil.encode("123"));
-		return "home";
+		return "home/home";
 	}
 	
 	@GetMapping("/users")
@@ -59,6 +52,23 @@ public class HomeController {
 			return ResponseEntity.status(500).body(null);
 		}
 		
+	}
+	
+	@RequestMapping(value="/detail")
+	public String detail(HttpServletResponse response) throws IOException{
+		return "home/DetailProduct";
+	}
+	@RequestMapping(value="/product-hot")
+	public String productHot(HttpServletResponse response) throws IOException{
+		return "home/ListProduct";
+	}
+	@RequestMapping(value="/product-new")
+	public String productNew(HttpServletResponse response) throws IOException{
+		return "home/ListProduct";
+	}
+	@RequestMapping(value="/manufacturer")
+	public String productManufacturer(HttpServletResponse response) throws IOException{
+		return "home/ListProduct";
 	}
 }
 
