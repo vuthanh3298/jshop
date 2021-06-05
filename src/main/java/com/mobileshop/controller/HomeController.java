@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mobileshop.model.UserModel;
 import com.mobileshop.service.UserService;
-import com.mobileshop.util.EncodedPasswordUtil;
 
 @Controller
 public class HomeController {

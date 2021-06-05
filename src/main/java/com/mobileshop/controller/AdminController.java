@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobileshop.model.BookModel;
 import com.mobileshop.model.BookTableModel;
@@ -44,13 +45,21 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/users")
-	public String users(ModelMap modelMap) throws IOException {
+	public String users(@RequestParam(value = "search", required = false) String condition, ModelMap modelMap)
+			throws IOException {
 		try {
 			List<RoleModel> roles = roleService.getAll();
 			modelMap.put("roles", roles);
 
-			List<UserModel> users = userService.getAll();
-			modelMap.put("users", users);
+			if (condition == null) {
+				List<UserModel> users = userService.getAll();
+				modelMap.put("users", users);
+			} else {
+				List<UserModel> users = userService.search(condition);
+				modelMap.put("users", users);
+			}
+			
+			modelMap.put("title", "QUẢN LÝ NGƯỜI DÙNG");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,11 +73,13 @@ public class AdminController {
 		try {
 			List<ProductModel> products = productService.getAll();
 			modelMap.put("products", products);
+			
+			modelMap.put("title", "QUẢN LÝ SẢN PHẨM");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return "admin/products";
 	}
 
@@ -122,6 +133,8 @@ public class AdminController {
 			modelMap.put("products", products);
 			List<UserModel> users = userService.getAll();
 			modelMap.put("users", users);
+			
+			modelMap.put("title", "QUẢN LÝ ĐƠN HÀNG");
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -17,4 +17,6 @@ public interface UserMapper {
 	public void deleteOne(String id) throws Exception;
 
 	public UserModel getUserByEmail(String email) throws Exception;
+
+	public List<UserModel> search(String condition) throws Exception;
 }
