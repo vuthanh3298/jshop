@@ -2,11 +2,33 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../../common/taglib.jsp"%>
 <div>
-	<div style="text-align: right;">
-		<button type="button" class="btn btn-primary add-product"
-			data-toggle="modal" data-target="#add-product-modal"
-			style="margin-bottom: 2px;">Thêm</button>
+	<div style="text-align: center;" >
+		<h3 style="color: blue;">
+			<strong>
+				${ title }			
+			</strong>
+		</h3>
+	</div>
+	
+	<hr>
+	
+	<div class="form-group row">
 
+		<form class="input-group col col-sm-8" action="<c:url value="/admin/users"/>" method="get">
+			<input type="text" class="form-control"
+				placeholder="Tìm kiếm... " aria-label="Tìm kiếm"
+				aria-describedby="basic-addon2" name=search>
+			<div class="input-group-append">
+				<button class="btn btn-primary" type="submit">Tìm</button>
+			</div>
+		 </form>
+		
+		<div style="text-align: right;" class="col col-sm-4">
+			<button type="button" class="btn btn-primary add-user"
+				data-toggle="modal" data-target="#add-user-modal"
+				style="margin-bottom: 2px;">Thêm</button>
+	
+		</div>
 	</div>
 	<table class="table table-hover table-bordered table-striped"
 		style="text-align: center; background-color: white;">

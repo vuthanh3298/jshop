@@ -25,18 +25,16 @@
 								</ul>
 								<ul class="header-social">
 									<sec:authorize access="isAnonymous()">
-										<li><a href="/login"> Đăng nhập</a></li>
-										<li><a href="/register"> Đăng ký</a></li>
+										<li><a href="/signin"> Đăng nhập</a></li>
+										<li><a href="/signup"> Đăng ký</a></li>
 									</sec:authorize>
 
 									<sec:authorize access="isAuthenticated()">
 										<li><a href="/trang-ca-nhan/cap-nhat-thong-tin">${USER.username}</a></li>
-										<li><a href="/trang-ca-nhan/cap-nhat-thong-tin">Trang
-												cá nhân</a></li>
 									</sec:authorize>
 
 									<sec:authorize access="hasAnyAuthority('ADMIN', 'CTV')">
-										<li><a href="/admin/quan-ly-nguoi-dung">Trang admin</a></li>
+										<li><a href="/admin/users">Trang admin</a></li>
 									</sec:authorize>
 								</ul>
 							</div>

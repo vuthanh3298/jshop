@@ -17,11 +17,11 @@
 						<div class="text-center">
 							<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 						</div>
-						<form class="user" action='<c:url value="/sign-up"/>'
+						<form class="user" action='<c:url value="/signup"/>'
 							method="POST">
 							<div class="form-group">
 								<input type="text" class="form-control form-control-user"
-									id="username" placeholder="Full Name" name="username">
+									id="name" placeholder="Full Name" name="name">
 							</div>
 							<div class="form-group">
 								<div class="span-email-exist" style="margin-left: 15px;"
@@ -48,13 +48,22 @@
 									<span style="color: red;">Nhập lại không đúng</span>
 								</div>
 							</div>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<select class="form-control form-control-user" name="gender" id="gender"
+									 style="margin-bottom: 0px; float: right; padding: 0 1rem !important; height: 50px;">
+			                            <option class="form-control" value="1" >Nam</option>
+			                            <option class="form-control" value="0" >Nữ</option>
+			                         </select>
+								</div>
+							</div>
 							<div class="form-group">
 								<input type="text" class="form-control form-control-user"
 									id="address" placeholder="Address" name="address">
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control form-control-user"
-									id="phone_number" placeholder="Phone" name="phone_number">
+									id="phoneNumber" placeholder="Phone" name="phoneNumber">
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-12">
@@ -62,6 +71,7 @@
 										id="dob" name="dob" title="Date of birth">
 								</div>
 							</div>
+							
 							<button type="submit"
 								class="btn btn-primary btn-user btn-block btn-create">Register
 								Account</button>

@@ -30,7 +30,7 @@ public class ApiController {
 		
 	}
 	
-	@DeleteMapping("/user/{id}")
+	@DeleteMapping("/user/{id:.+}")
 	public Boolean deleteUser(@PathVariable String id) {
 		try {
 			userService.deleteOne(id);

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mobileshop.mapper.UserMapper;
 import com.mobileshop.model.RoleModel;
 import com.mobileshop.model.UserModel;
+import com.mobileshop.util.EncodedPasswordUtil;
 
 @Service
 public class UserService {
@@ -53,6 +54,26 @@ public class UserService {
 
 	public UserModel getUserByEmail(String email) throws Exception {
 		return usersMapper.getUserByEmail(email);
+	}
+
+	public List<UserModel> search(String condition) throws Exception {
+		return usersMapper.search(condition);
+	}
+
+	public void saveOne(UserModel userModel) throws Exception {
+		if(userModel.getUserId() == null) {
+			userModel.setUserId(userModel.getEmail());
+		}
+		
+		if(userModel.getRoleId() == 0) {
+			userModel.setRoleId(3);
+			userModel.setPosition("USER");
+		}
+		
+		String passwordEncode = EncodedPasswordUtil.encode(userModel.getPassword());
+		userModel.setPassword(passwordEncode);
+		
+		usersMapper.saveOne(userModel);
 	}
 	
 }

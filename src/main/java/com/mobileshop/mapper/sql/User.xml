@@ -11,6 +11,11 @@
         SELECT * FROM USER where USER_ID = #{id};
     </select> 
     
+    <select id="search" parameterType="String" resultMap="result">
+    	<bind name="pattern" value="'%' + condition + '%'" />
+        SELECT * FROM USER where USER_ID LIKE #{pattern} OR NAME LIKE #{pattern};
+    </select> 
+    
     <select id="getUserByEmail" parameterType="String" resultMap="result">
         SELECT * FROM USER where EMAIL = #{email};
     </select>
