@@ -68,7 +68,7 @@
 						</form>
 						<hr>
 						<div class="text-center">
-							<a class="small" href="<c:url value='/sign-in'/>">Already
+							<a class="small" href="<c:url value='/signin'/>">Already
 								have an account? Login!</a>
 						</div>
 					</div>

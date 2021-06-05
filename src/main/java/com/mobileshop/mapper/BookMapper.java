@@ -1,13 +1,11 @@
 package com.mobileshop.mapper;
 
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
 import com.mobileshop.model.BookModel;
 import com.mobileshop.model.BookTableModel;
-import com.mobileshop.model.ProductModel;
 
 
 public interface BookMapper {

@@ -50,5 +50,9 @@ public class UserService {
 	public void deleteOne(String id) throws Exception {
 		usersMapper.deleteOne(id);
 	}
+
+	public UserModel getUserByEmail(String email) throws Exception {
+		return usersMapper.getUserByEmail(email);
+	}
 	
 }

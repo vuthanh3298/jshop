@@ -9,11 +9,15 @@
     
     <select id="getUser" parameterType="String" resultMap="result">
         SELECT * FROM USER where USER_ID = #{id};
+    </select> 
+    
+    <select id="getUserByEmail" parameterType="String" resultMap="result">
+        SELECT * FROM USER where EMAIL = #{email};
     </select>
     
     <insert id="saveOne" parameterType="com.mobileshop.model.UserModel">
-       	INSERT INTO USER (USER_ID, POSITION, NAME, DOB, GENDER, ADDRESS, PHONE_NUMBER, EMAIL, NOTE, ROLE_ID)
-       		VALUES (#{userId}, #{position}, #{name}, #{dob}, #{gender}, #{address}, #{phoneNumber}, #{email}, #{note}, #{roleId})
+       	INSERT INTO USER (USER_ID, POSITION, NAME, DOB, GENDER, ADDRESS, PHONE_NUMBER, EMAIL, <if test="#{password != null}">PASSWORD,</if> NOTE, ROLE_ID)
+       		VALUES (#{userId}, #{position}, #{name}, #{dob}, #{gender}, #{address}, #{phoneNumber}, #{email}, <if test="#{password != null}">#{password}, </if> #{note}, #{roleId})
     </insert>
     
     <delete id="deleteOne" parameterType="string">
@@ -49,7 +53,7 @@
        <result property = "phoneNumber" column = "PHONE_NUMBER"/>
        <result property = "email" column = "EMAIL"/>
        <result property = "note" column = "NOTE"/>
-       <result property = "pass" column = "PASS"/>
+       <result property = "password" column = "PASSWORD"/>
        <result property = "roleId" column = "ROLE_ID"/>
     </resultMap>
 </mapper>
