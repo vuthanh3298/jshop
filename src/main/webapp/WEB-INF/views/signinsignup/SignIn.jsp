@@ -60,7 +60,7 @@
 									</form>
 									<hr>
 									<div class="text-center">
-										<a class="small" href="<c:url value='/forgot-password'/>">Forgot
+										<a class="small" href="<c:url value='/change-password'/>">Forgot
 											Password?</a>
 									</div>
 									<div class="text-center">
