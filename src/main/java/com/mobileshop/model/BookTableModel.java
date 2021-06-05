@@ -1,9 +1,9 @@
 package com.mobileshop.model;
 
 public class BookTableModel extends BookModel {
-	private String name;// tên SP
-	private String unit;// đơn vị tính
-	private double price;// giá
+	private String name;
+	private String unit;
+	private double price;
 
 	public BookTableModel() {
 		super();

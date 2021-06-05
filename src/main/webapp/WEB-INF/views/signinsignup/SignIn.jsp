@@ -36,8 +36,7 @@
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
 									</div>
-									<form action='<c:url value="/j_spring_security_login"/>'
-										method="POST">
+									<form action='<c:url value="/j_spring_security_login"/>' method="POST">
 										<div class="form-group">
 											<input type="email" class="form-control form-control-user"
 												aria-describedby="emailHelp"
@@ -51,8 +50,7 @@
 											<div class="custom-control custom-checkbox small">
 												<input type="checkbox" class="custom-control-input"
 													id="customCheck"> <label
-													class="custom-control-label" for="customCheck">Remember
-													Me</label>
+													class="custom-control-label" for="customCheck">Remember Me</label>
 											</div>
 										</div>
 										<button class="btn btn-primary btn-user btn-block"
@@ -66,8 +64,7 @@
 											Password?</a>
 									</div>
 									<div class="text-center">
-										<a class="small" href="<c:url value='/signup'/>">Create
-											an Account!</a>
+										<a class="small" href="<c:url value='/signup'/>">Create an Account!</a>
 									</div>
 								</div>
 							</div>

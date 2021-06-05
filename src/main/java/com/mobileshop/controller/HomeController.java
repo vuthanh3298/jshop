@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mobileshop.model.UserModel;
 import com.mobileshop.service.UserService;
+import com.mobileshop.util.EncodedPasswordUtil;
 
 @Controller
 public class HomeController {
@@ -23,6 +24,13 @@ public class HomeController {
 
 	@RequestMapping(value="/")
 	public String test(HttpServletResponse response) throws IOException{
+		System.out.println(EncodedPasswordUtil.encode("123"));
+		return "home";
+	}
+	
+	@RequestMapping(value="/403")
+	public String error(HttpServletResponse response) throws IOException{
+		System.out.println(EncodedPasswordUtil.encode("123"));
 		return "home";
 	}
 	

@@ -15,4 +15,6 @@ public interface UserMapper {
 	public void saveOne(UserModel userModel) throws Exception;
 
 	public void deleteOne(String id) throws Exception;
+
+	public UserModel getUserByEmail(String email) throws Exception;
 }

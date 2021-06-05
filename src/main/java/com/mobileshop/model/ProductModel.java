@@ -2,15 +2,15 @@ package com.mobileshop.model;
 
 public class ProductModel {
 	
-	private String productId;//mã hàng
-	private String name;//tên hàng
-	private String type;//loại hàng
-	private String manufacturer;//hãng sản xuất
-	private int unit;//đơn vị tính ( Cái/ Chục cái/ trăm cái)
-	private String warrantyPeriod;// thời gian bảo hành
-	private int inventory;//Số lượng hàng tồn
-	private String described;//mô tả loại hàng
-	private double price;//giá
+	private String productId;
+	private String name;
+	private String type;
+	private String manufacturer;
+	private int unit;
+	private String warrantyPeriod;
+	private int inventory;
+	private String described;
+	private double price;
 	
 	public ProductModel() {
 		super();

@@ -1,8 +1,8 @@
 package com.mobileshop.model;
 
 public class RoleModel {
-	private int roleId;//id
-	private String roleName;//tên chức vụ
+	private int roleId;
+	private String roleName;
 	
 	public RoleModel() {
 		super();

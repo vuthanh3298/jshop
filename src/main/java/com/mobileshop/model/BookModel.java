@@ -3,13 +3,13 @@ package com.mobileshop.model;
 import java.sql.Timestamp;
 
 public class BookModel {
-	private String productId;// mã hàng
-	private String userId;// mã người đặt
-	private Timestamp time;// thời gian đặt hàng
-	private Integer amount;// số lượng
-	private String address;// địa chỉ giao hàng
-	private String paymentMethods;// Phương thức thanh toán
-	private String note;// ghi chú
+	private String productId;
+	private String userId;
+	private Timestamp time;
+	private Integer amount;
+	private String address;
+	private String paymentMethods;
+	private String note;
 
 	public BookModel() {
 		super();
