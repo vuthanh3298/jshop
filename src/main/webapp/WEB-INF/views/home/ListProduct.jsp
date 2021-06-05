@@ -20,10 +20,10 @@
 		style="padding-top: 50px; padding-bottom: 50px;">
 		<div class="container">
 
-
-			<h3 style="color: blue;">Sản phẩm nổi bật</h3>
+			<h2 class="card-title" style="color: blue">>Kết quả tìm kiếm</h2>
+			<h3 style="color: blue;"></h3>
 			<div class="row">
-				<c:forEach var="i" begin="1" end="4">
+				<c:forEach var="i" begin="1" end="100">
 					<div class="col-xl-3 col-lg-3 col-md-6">
 						<a class="small" href="<c:url value='/detail'/>">
 							<div class="single-profile mb-30"
@@ -47,27 +47,9 @@
 						</a>
 					</div>
 				</c:forEach>
-				<a href="<c:url value='/product-new'/>"
-					class="genric-btn success-border circle" style="margin-left: 50%;">Xem
-					thêm</a>
+				
 			</div>
 
 		</div>
 	</div>
-
-
-	<!-- Team-profile End-->
-	<script type="text/javascript">
-		// <![CDATA[
-		$(function() {
-			$(".title").each(function(i) {
-				len = $(this).text().length;
-				if (len > 80) {
-					$(this).text($(this).text().substr(0, 60) + '...');
-				}
-			});
-		});
-	</script>
-
-	<script src="/js/web/TimKiem.js"></script>
 </main>
