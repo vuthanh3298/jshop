@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mobileshop.mapper.CartMapper">
+
+    <select id="getByUserIdAndProductId" parameterType="map" resultMap="result">
+        SELECT * FROM CART
+        WHERE 1 = 1
+        	AND USER_ID = #{userId}
+        	AND PRODUCT_ID = #{productId}
+    </select>
+    
+    <insert id="saveOne" parameterType="com.mobileshop.model.CartModel">
+	     INSERT INTO CART (USER_ID, PRODUCT_ID, AMOUNT) 
+	     VALUES (#{userId},#{productId},#{amount});
+    </insert>
+    
+    <update id="updateOne" parameterType="com.mobileshop.model.CartModel">
+     	UPDATE 
+     		CART
+     	SET
+     		USER_ID = #{userId},
+     		PRODUCT_ID = #{productId},
+     		AMOUNT = #{amount}
+     	WHERE
+     		CART_ID = #{cartId}
+    </update>
+    
+    
+    
+    <resultMap id = "result" type = "com.mobileshop.model.CartModel">
+       <result property = "cartId" column = "CART_ID"/>
+       <result property = "productId" column = "PRODUCT_ID"/>
+       <result property = "userId" column = "USER_ID"/>
+       <result property = "amount" column = "AMOUNT"/>
+    </resultMap>
+</mapper>

@@ -58,8 +58,6 @@ public class AdminController {
 				List<UserModel> users = userService.search(condition);
 				modelMap.put("users", users);
 			}
-			
-			modelMap.put("title", "QUẢN LÝ NGƯỜI DÙNG");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +71,6 @@ public class AdminController {
 		try {
 			List<ProductModel> products = productService.getAll();
 			modelMap.put("products", products);
-			
-			modelMap.put("title", "QUẢN LÝ SẢN PHẨM");
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -133,8 +128,6 @@ public class AdminController {
 			modelMap.put("products", products);
 			List<UserModel> users = userService.getAll();
 			modelMap.put("users", users);
-			
-			modelMap.put("title", "QUẢN LÝ ĐƠN HÀNG");
 
 		} catch (Exception e) {
 			e.printStackTrace();

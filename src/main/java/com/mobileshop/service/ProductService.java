@@ -18,9 +18,11 @@ public class ProductService {
 	public List<ProductModel> getAll() throws Exception {
 		return productMapper.getAll();
 	}
+	
 	public ProductModel getProduct(String id) throws Exception {
 		return productMapper.getProduct(id);
 	}
+	
 	public List<Object> selectTopList() throws Exception{
 	 	List<Object> productModelHot = new ArrayList<Object>();// = baiDangService.selectTop4DuAn();
 		List<ProductModel>productModelDANB = productMapper.getAll();;

@@ -7,7 +7,7 @@
 	<main>
 	<div style="margin-left: 100px">
 	
-	<h2 class="card-title" style="color: blue;" >>Chi tiết sản phẩm</h2>
+	<h2 class="card-title" style="color: blue;" > >Chi tiết sản phẩm </h2>
 	</div>
 		<div class="row">
 			<div class="col-xl-6 col-lg-6">
@@ -47,36 +47,45 @@
 			</div>
 			<div class="col-xl-4 col-lg-4" style="margin-top: 100px;">
 				<div class="row" style="margin-bottom: 5px;">
-					<h3 style="color: blue;">Điện thoại iPhone 12 Pro 128GB Xám</h3>
-					<button class="boxed-btn" style="size: 8px;">Còn hàng</button>
+					<h3 style="color: blue;">${product.name}</h3> 
+					<button class="boxed-btn" style="size: 8px; margin-left: 25px;">Còn hàng</button>
 				</div>
 
 				<div class="row" style="background-color: #fafafa;">
-					<h5 style="color: red; margin-right: 50px;">19.990.000 ₫</h5>
-					Giá niêm yết :
-					<h5 style="color: gray;">32.990.000 ₫</h5>
+					<h5 style="color: red; margin-right: 50px;">
+						<fmt:formatNumber value = "${product.price}" type = "currency" currencyCode="VND" maxFractionDigits="0"/>
+					</h5>
+					Giá niêm yết:
+					<h5 style="color: gray; margin-left: 10px;"> <del> <fmt:formatNumber value = "${oldPrice}" type = "currency" currencyCode="VND" maxFractionDigits="0"/> </del></h5>
 				</div>
 				<div class="row"
 					style="background-color: #fafafa; margin-top: 10px;">
-					<p>Bên cạnh biên bản Galaxy Note 20 thường, Samsung còn cho ra
-						mắt Note 20 Ultra 5G cho khả năng kết nối dữ liệu cao cùng thiết
-						kế nguyên khối sang trọng, bắt mắt. Đây sẽ là sự lựa chọn hoàn hảo
-						dành cho bạn để sử dụng mà không bị lỗi thời sau thời gian dài ra
-						mắt.</p>
+					<p>${product.described}</p>
 				</div>
-				<div class="row" style="margin-top: 10px;">
-					<label class="col-sm-3 col-form-label">Số lượng</label>
-					<div class="col-sm-3">
-						<input type="number" min="1" class="form-control" id="amount"
-							name="amount">
+				<form action="<c:url value='/cart/'/>" method="post">
+					<input name="productId" value="${product.productId}" hidden="true">
+					<div class="row" style="margin-top: 10px;">
+						<label class="col-sm-3 col-form-label">Số lượng</label>
+						<div class="col-sm-3">
+							<input type="number" value="1" min="1" class="form-control" id="amount"
+								name="amount">
+						</div>
+						<div class=" col-xl-6 col-lg-6 col-md-6" style="text-align: right;">
+						
+						
+							<sec:authorize access="isAnonymous()">
+								<a href="<c:url value='/midleware-purchase/${product.productId}'/>">
+									<button type="button" class="send-btn" style="height: 40px;">Mua Ngay</button>
+								</a>
+							</sec:authorize>
+	
+							<sec:authorize access="isAuthenticated()">
+								<button type="submit" class="send-btn" style="height: 40px;">Mua Ngay</button>
+							</sec:authorize>
+						
+						</div>
 					</div>
-					<div class=" col-xl-6 col-lg-6 col-md-6" style="text-align: right;">
-						<a href="<c:url value='/cart'/>">
-							<button type="submit" class="send-btn" style="height: 40px;">Mua
-								Ngay</button>
-						</a>
-					</div>
-				</div>
+				</form>
 			</div>
 
 
