@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobileshop.model.ManufacturerModel;
 import com.mobileshop.model.ProductModel;
-import com.mobileshop.model.UserModel;
 import com.mobileshop.service.CartService;
 import com.mobileshop.service.ManufacturerService;
 import com.mobileshop.service.ProductService;
@@ -37,11 +38,6 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String home(ModelMap modelMap) throws IOException {
 		try {
-			Object productsHot = productService.selectTopList();
-	    	modelMap.addAttribute("productsHot", productsHot);
-			List<ProductModel> productsNew = productService.getAll();
-			
-			modelMap.put("productsNew", productsNew);
 
 			List<Object> productsHot = new ArrayList<Object>();
 			List<ProductModel> productTopList = productService.selectTopList();
@@ -95,19 +91,6 @@ public class HomeController {
 		}
 		
 		return "home/home";
-	}
-
-	@RequestMapping(value = "/detail")
-	public String detail(HttpServletResponse response, ModelMap modelMap) throws IOException {
-		
-		try {
-			List<ManufacturerModel> manufacturers = manufacturerService.getAll();
-			modelMap.addAttribute("manufacturers", manufacturers);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 	}
 	
 	@GetMapping("/product-detail/{id}")
@@ -168,10 +151,10 @@ public class HomeController {
 		return "home/ListProduct";
 	}
 	
-	@RequestMapping(value="/purchase-order")
-	public String purchaseOrder(HttpServletResponse response) throws IOException{
-		return "home/purchaseOrder";
-	}
+//	@RequestMapping(value="/purchase-order")
+//	public String purchaseOrder(HttpServletResponse response) throws IOException{
+//		return "home/purchaseOrder";
+//	}
 	
 	@GetMapping("/midleware-purchase/{id}")
 	public String midlewarePurchase(@PathVariable String id) {
@@ -202,6 +185,5 @@ public class HomeController {
 		}
 		return "home/purchaseOrder";
 	}
-	
 	
 }

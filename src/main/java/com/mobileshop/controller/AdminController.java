@@ -78,9 +78,6 @@ public class AdminController {
 				modelMap.put("products", products);
 			}
 			
-			
-			modelMap.put("title", "QUẢN LÝ SẢN PHẨM");
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

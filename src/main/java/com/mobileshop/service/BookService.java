@@ -101,6 +101,7 @@ public class BookService {
 		bookModel.setTotal(total);
 
 		bookMapper.saveBookByOrder(bookModel);
+	}
 
 	@Transactional
 	public void deleteOne(String productId, String userId, Timestamp time) {
