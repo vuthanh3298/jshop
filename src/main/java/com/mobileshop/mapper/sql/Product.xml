@@ -5,6 +5,15 @@
     <select id="getAll" resultMap="result">
         SELECT * FROM PRODUCT;
     </select>
+    <select id="selectNewList" resultMap="result">
+        SELECT * FROM PRODUCT ORDER BY CREATE_AT DESC;
+    </select>
+    <select id="selectTopList" resultMap="result">
+        SELECT * FROM PRODUCT ORDER BY PRICE DESC;
+    </select>
+    <select id="selectManufacturerList" resultMap="result" parameterType="int">
+        SELECT * FROM PRODUCT WHERE manufacturer = #{manufacturer};
+    </select>
     
     <select id="getProduct" parameterType="String" resultMap="result">
         SELECT * FROM PRODUCT where PRODUCT_ID = #{id};
@@ -14,23 +23,31 @@
      VALUES (#{productId},#{name},#{type},#{manufacturer},#{unit},#{warrantyPeriod},#{inventory},#{described},#{price});
     </insert>
     
-	<update id="updateOne" parameterType="com.mobileshop.model.ProductModel">
-	 	UPDATE 
-	 		PRODUCT
-	 	SET
-	 		NAME = #{name},
-	 		TYPE = #{type},
-	 		MANUFACTURER = #{manufacturer},
-	 		UNIT = #{unit},
-	 		WARRANTY_PERIOD = #{warrantyPeriod},
-	 		INVENTORY = #{inventory},
-	 		DESCRIBED = #{described},
-	 		PRICE = #{price}
-	 	WHERE
-	 		PRODUCT_ID = #{productId}
-	 		
-	</update>
+     <update id="updateOne" parameterType="com.mobileshop.model.ProductModel">
+     	UPDATE 
+     		PRODUCT
+     	SET
+     		NAME = #{name},
+     		TYPE = #{type},
+     		MANUFACTURER = #{manufacturer},
+     		UNIT = #{unit},
+     		WARRANTY_PERIOD = #{warrantyPeriod},
+     		INVENTORY = #{inventory},
+     		DESCRIBED = #{described},
+     		PRICE = #{price}
+     	WHERE
+     		PRODUCT_ID = #{productId}
+     		
+    </update>
+    <delete id="deleteOne" parameterType="string">
+       	DELETE FROM PRODUCT
+    	WHERE PRODUCT_ID = #{id}
+    </delete>
     
+    <select id="search" parameterType="String" resultMap="result">
+    	<bind name="pattern" value="'%' + condition + '%'" />
+        SELECT * FROM PRODUCT where PRODUCT_ID LIKE #{pattern} OR NAME LIKE #{pattern};
+    </select>
     
     <resultMap id = "result" type = "com.mobileshop.model.ProductModel">
        <result property = "productId" column = "PRODUCT_ID"/>

@@ -9,6 +9,7 @@
 		<mapper resource="com/mobileshop/mapper/sql/Role.xml" />
 		<mapper resource="com/mobileshop/mapper/sql/Book.xml" />
 		<mapper resource="com/mobileshop/mapper/sql/Cart.xml" />
+		<mapper resource="com/mobileshop/mapper/sql/Manufacturer.xml" />
 	</mappers>
 
 </configuration>
