@@ -3,25 +3,22 @@ package com.mobileshop.model;
 public class BookTableModel extends BookModel {
 	private String name;
 	private String unit;
-	private double price;
 
 	public BookTableModel() {
 		super();
 	}
 
-	
 	@Override
 	public String toString() {
-		return "ProductModel [" + "productName=" + name + ", unit=" + unit + ", price=" + price + "]";
+		return "ProductModel [" + "productName=" + name + ", unit=" + unit + "]";
 	}
 
 	
 
-	public BookTableModel(String name, String unit, double price) {
+	public BookTableModel(String name, String unit) {
 		super();
 		this.name = name;
 		this.unit = unit;
-		this.price = price;
 	}
 
 
@@ -41,14 +38,6 @@ public class BookTableModel extends BookModel {
 
 	public void setUnit(String unit) {
 		this.unit = unit;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
 	}
 
 }

@@ -9,7 +9,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Web</title>
 
-<link rel="stylesheet" href="<c:url value='/resources/templates/web/assets/css/bootstrap.min.css' />" />
+			<link rel="stylesheet" href="<c:url value='/resources/templates/web/assets/css/bootstrap.min.css' />" />
             <link rel="stylesheet" href="<c:url value='/resources/templates/web/assets/css/owl.carousel.min.css' />" />
             <link rel="stylesheet" href="<c:url value='/resources/templates/web/assets/css/flaticon.css' />" />
             <link rel="stylesheet" href="<c:url value='/resources/templates/web/assets/css/slicknav.css' />" />
@@ -39,7 +39,7 @@
                 <!-- Header Start -->
                 <div class="header-area">
                     <div class="main-header ">
-                        <%@ include file="../common/web/header.jsp"%>
+                       <%@ include file="../common/web/header.jsp"%>
                        <%@ include file="../common/web/search.jsp"%>
                     </div>
                 </div>
@@ -80,6 +80,8 @@
                 <!-- Jquery Plugins, main Jquery -->
                 <script  src="<c:url value="/resources/templates/web/assets/js/plugins.js"/>"></script>
                 <script  src="<c:url value="/resources/templates/web/assets/js/main.js"/>"></script>
+
+                <script  src="<c:url value="/resources/js/web/cart.js"/>"></script>
         </body>
 
         </html>

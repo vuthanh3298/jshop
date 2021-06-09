@@ -9,14 +9,22 @@
     <select id="getAllBookTable" resultMap="resultTable">
         select b.*,p.NAME, p.UNIT, p.PRICE  from PRODUCT as p, BOOK as b where p.PRODUCT_ID = b.PRODUCT_ID;
     </select>
+    
     <select id="getBook" resultMap="result" parameterType="map"	>
         select * from BOOK where PRODUCT_ID = #{productId} and USER_ID=#{userId} and TIME = #{time};
     </select>
+    
     <insert id="saveOne" parameterType="com.mobileshop.model.ProductModel">
     	INSERT INTO BOOK (PRODUCT_ID, USER_ID, TIME, AMOUNT, ADDRESS, PAYMENT_METHODS, NOTE) 
     	VALUES (#{productId}, #{userId}, #{time}, #{amount}, #{address}, #{paymentMethods}, #{note});
-     </insert>
-     <update id="updateOne" parameterType="com.mobileshop.model.ProductModel">
+    </insert>
+     
+    <insert id="saveBookByOrder" parameterType="com.mobileshop.model.ProductModel">
+    	INSERT INTO BOOK (PRODUCT_ID, USER_ID, TIME, AMOUNT, ADDRESS, PAYMENT_METHODS, NOTE, PRICE, TOTAL, PHONE) 
+    	VALUES (#{productId}, #{userId}, #{time}, #{amount}, #{address}, #{paymentMethods}, #{note}, #{price}, #{total}, #{phone});
+    </insert>
+     
+    <update id="updateOne" parameterType="com.mobileshop.model.ProductModel">
      	UPDATE 
      		BOOK
      	SET
@@ -39,6 +47,9 @@
        <result property = "address" column = "ADDRESS"/>
        <result property = "paymentMethods" column = "PAYMENT_METHODS"/>
        <result property = "note" column = "NOTE"/>
+       <result property = "price" column = "PRICE"/>
+       <result property = "total" column = "NOTE"/>
+       <result property = "phone" column = "NOTE"/>
     </resultMap>
     
     <resultMap id = "resultTable" type = "com.mobileshop.model.BookTableModel">

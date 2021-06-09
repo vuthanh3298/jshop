@@ -7,7 +7,7 @@
 	<div style="text-align: center;" >
 		<h3 style="color: blue;">
 			<strong>
-				${ title }			
+				QUẢN LÝ NGƯỜI DÙNG		
 			</strong>
 		</h3>
 	</div>

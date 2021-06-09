@@ -5,7 +5,7 @@
 	<div style="text-align: center;" >
 		<h3 style="color: blue;">
 			<strong>
-				${ title }			
+				QUẢN LÝ SẢN PHẨM		
 			</strong>
 		</h3>
 	</div>
