@@ -2,9 +2,20 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="../../common/taglib.jsp"%>
+<style>
+#main-image>div>div {
+	overflow: visible;
+}
 
-<body style="overflow: visible;">
-	<main>
+#main-image ul {
+	height: 250px;
+	overflow: auto !important;
+}
+</style>
+<div class="team-profile team-padding"
+	style="padding-top: 50px; padding-bottom: 50px;">
+	<div class="container">
+
 		<div class="row" style="margin-top: 10px;">
 
 			<div class="col-xl-2 col-lg-2"></div>
@@ -142,7 +153,5 @@
 			<div class="col-xl-2 col-lg-2"></div>
 
 		</div>
-	</main>
-
-
-</body>
+	</div>
+</div>

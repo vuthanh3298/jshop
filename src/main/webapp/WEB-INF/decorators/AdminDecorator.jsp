@@ -46,6 +46,12 @@
 		
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/user/index.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/product/index.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/book/index.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/report/index.js" />"></script>
 </body>
 
 </html>

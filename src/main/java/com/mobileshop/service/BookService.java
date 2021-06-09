@@ -54,11 +54,9 @@ public class BookService {
 		params.put("productId", bookModel.getProductId());
 		params.put("userId", bookModel.getUserId());
 		params.put("time", bookModel.getTime());
-		BookModel product = this.getBook(params);
-
-		// get roleName => set for position in user table
-
-		if (product != null) {
+		BookModel book = this.getBook(params);
+		
+		if(book != null) {
 			bookMapper.updateOne(bookModel);
 		} else {
 			bookMapper.saveOne(bookModel);
@@ -104,6 +102,17 @@ public class BookService {
 
 		bookMapper.saveBookByOrder(bookModel);
 
+	@Transactional
+	public void deleteOne(String productId, String userId, Timestamp time) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("productId", productId);
+		params.put("userId",userId);
+		params.put("time", time);
+		bookMapper.deleteOne(params);
+		
+	}
+	public List<BookTableModel> searchBookTable(String condition) throws Exception {
+		return bookMapper.searchBookTable(condition);
 	}
 
 }

@@ -3,6 +3,7 @@ package com.mobileshop.controller;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -66,11 +67,20 @@ public class AdminController {
 		return "admin/users";
 	}
 
-	@RequestMapping(value = "/products")
-	public String products(ModelMap modelMap) throws IOException {
+	@GetMapping(value = "/products")
+	public String products(@RequestParam(value = "search", required = false) String condition,ModelMap modelMap) throws IOException {
 		try {
-			List<ProductModel> products = productService.getAll();
-			modelMap.put("products", products);
+			if (condition == null) {
+				List<ProductModel> products = productService.getAll();
+				modelMap.put("products", products);
+			} else {
+				List<ProductModel> products = productService.search(condition);
+				modelMap.put("products", products);
+			}
+			
+			
+			modelMap.put("title", "QUẢN LÝ SẢN PHẨM");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -102,9 +112,12 @@ public class AdminController {
 
 	@PostMapping("/book")
 	public String saveOrUpdateBook(@ModelAttribute BookModel bookModel) {
-		LocalDateTime now = LocalDateTime.now();
-		Timestamp timestamp = Timestamp.valueOf(now);
-		bookModel.setTime(timestamp);
+		if(bookModel.getTime() != null) {
+			LocalDateTime now = LocalDateTime.now();
+			Timestamp timestamp = Timestamp.valueOf(now);
+			bookModel.setTime(timestamp);
+		}
+		
 		try {
 			bookService.saveOrUpdateBook(bookModel);
 		} catch (Exception e) {
@@ -115,15 +128,16 @@ public class AdminController {
 	}
 
 	@GetMapping("/books")
-	public String books(ModelMap modelMap) throws IOException {
+	public String books(@RequestParam(value = "search", required = false) String condition,ModelMap modelMap) throws IOException {
 		try {
-
-			/*
-			 * List<BookModel> books = bookService.getAll(); modelMap.put("books", books);
-			 */
-
-			List<BookTableModel> bookTable = bookService.getAllBookTable();
-			modelMap.put("bookTable", bookTable);
+			if (condition == null) {
+				List<BookTableModel> bookTable = bookService.getAllBookTable();
+				modelMap.put("bookTable", bookTable);
+			} else {
+				List<BookTableModel> bookTable = bookService.searchBookTable(condition);
+				modelMap.put("bookTable", bookTable);
+			}
+			
 			List<ProductModel> products = productService.getAll();
 			modelMap.put("products", products);
 			List<UserModel> users = userService.getAll();
@@ -134,5 +148,11 @@ public class AdminController {
 		}
 
 		return "admin/books";
+	}
+	@GetMapping("/report")
+	public String report(ModelMap modelMap) throws IOException {
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		modelMap.put("year", year);
+		return "admin/report";
 	}
 }

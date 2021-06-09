@@ -17,8 +17,20 @@
 
 								<div class="form-wrapper"
 									style="background: rgba(255, 248, 153, 0.424); border: 2px solid #cc0000; border-radius: 10px; padding: 15px; margin: 20px;">
-									<form action="<c:url value='/tim-kiem'/>" method="GET">
+									<form action="<c:url value='/search'/>" method="GET">
 										<div class="row">
+											<div class="col-lg-2 col-md-2">
+												<div class="select-itms">
+													<select name="giaThapNhat" id="giaThapNhat"
+														style="display: none;">
+														<option value="-1">Hãng</option>
+														<option value="all">Tất cả</option>
+														<c:forEach var="manufacturer" items="${manufacturers}">
+															<option value="${manufacturer.id }">${manufacturer.name }</option>
+														</c:forEach>
+													</select>
+												</div>
+											</div>
 											<div class="col-lg-2 col-md-2">
 												<div class="select-itms">
 													<select name="giaThapNhat" id="giaThapNhat"
@@ -31,12 +43,6 @@
 														<option value="10000000">10 Triệu</option>
 														<option value="30000000">30 Triệu</option>
 														<option value="50000000">50 Triệu</option>
-														<option value="100000000">100 Triệu</option>
-														<option value="300000000">300 Triệu</option>
-														<option value="500000000">500 Triệu</option>
-														<option value="1000000000">1 Tỷ</option>
-														<option value="10000000000">10 Tỷ</option>
-														<option value="50000000000">50 Tỷ</option>
 													</select>
 												</div>
 											</div>
@@ -52,17 +58,11 @@
 														<option value="10000000">10 Triệu</option>
 														<option value="30000000">30 Triệu</option>
 														<option value="50000000">50 Triệu</option>
-														<option value="100000000">100 Triệu</option>
-														<option value="300000000">300 Triệu</option>
-														<option value="500000000">500 Triệu</option>
-														<option value="1000000000">1 Tỷ</option>
-														<option value="10000000000">10 Tỷ</option>
-														<option value="50000000000">50 Tỷ</option>
 														<option value="-1">Không giới hạn</option>
 													</select>
 												</div>
 											</div>
-											<div class="col-lg-6 col-md-6 mb-4">
+											<div class="col-lg-4 col-md-4 mb-4">
 												<div class="form-box">
 													<input type="text" name="tuKhoa" placeholder="Từ khoá">
 												</div>
