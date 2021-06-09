@@ -6,7 +6,7 @@
 	<div style="text-align: center;" >
 		<h3 style="color: blue;">
 			<strong>
-				${ title }			
+				QUẢN LÝ ĐƠN HÀNG		
 			</strong>
 		</h3>
 	</div>
@@ -59,11 +59,15 @@
 					<th scope="col">${book.name}</th>
 					<th scope="col">${book.unit}</th>
 					<th scope="col">${book.amount}</th>
-					<th scope="col">${book.price}</th>
+					<th scope="col">
+						<fmt:formatNumber value = "${book.price}" type = "currency" currencyCode="VND" maxFractionDigits="0"/>
+					</th>
 					<th scope="col">${book.address}</th>
 					<th scope="col">${book.time}</th>
 
-					<th scope="col">${book.amount*book.price}</th>
+					<th scope="col">
+						<fmt:formatNumber value = "${book.total}" type = "currency" currencyCode="VND" maxFractionDigits="0"/>
+					</th>
 					<th scope="col">${book.paymentMethods}</th>
 					<th scope="col">${book.note}</th>
 

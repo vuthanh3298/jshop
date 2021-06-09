@@ -12,5 +12,13 @@ public interface CartMapper {
 	public void updateOne(CartModel cartModel) throws Exception;
 
 	public void saveOne(CartModel cartModel) throws Exception;
-	
+
+	public List<CartModel> getByUserId(String userId) throws Exception;
+
+	public void deleteCart(Map<String, Object> params) throws Exception;
+
+	public CartModel getOne(String cartId) throws Exception;
+
+	public void deleteCartById(String cartId) throws Exception;
+
 }

@@ -9,6 +9,18 @@
         	AND USER_ID = #{userId}
         	AND PRODUCT_ID = #{productId}
     </select>
+
+    <select id="getByUserId" parameterType="String" resultMap="result">
+        SELECT * FROM CART
+        WHERE 1 = 1
+        	AND USER_ID = #{userId}
+    </select>
+
+    <select id="getOne" parameterType="String" resultMap="result">
+        SELECT * FROM CART
+        WHERE 1 = 1
+        	AND CART_ID = #{cartId}
+    </select>
     
     <insert id="saveOne" parameterType="com.mobileshop.model.CartModel">
 	     INSERT INTO CART (USER_ID, PRODUCT_ID, AMOUNT) 
@@ -26,7 +38,15 @@
      		CART_ID = #{cartId}
     </update>
     
-    
+    <delete id="deleteCart" parameterType="map">
+       	DELETE FROM CART
+    	WHERE USER_ID = #{userId} AND PRODUCT_ID = #{productId}
+    </delete>
+
+    <delete id="deleteCartById" parameterType="String">
+       	DELETE FROM CART
+    	WHERE CART_ID = #{cartId}
+    </delete>
     
     <resultMap id = "result" type = "com.mobileshop.model.CartModel">
        <result property = "cartId" column = "CART_ID"/>

@@ -102,10 +102,7 @@ public class HomeController {
 	public String productManufacturer(HttpServletResponse response) throws IOException{
 		return "home/ListProduct";
 	}
-	@RequestMapping(value="/cart")
-	public String cart(HttpServletResponse response) throws IOException{
-		return "home/Cart";
-	}
+	
 	@RequestMapping(value="/purchase-order")
 	public String purchaseOrder(HttpServletResponse response) throws IOException{
 		return "home/purchaseOrder";
