@@ -23,6 +23,14 @@
 	<div class="scrollbar-sidebar">
 		<div class="app-sidebar__inner">
 			<ul class="vertical-nav-menu">
+				<li class="app-sidebar__heading">Mobile shop</li>
+				<li><a class="mm-active" href='<c:url value="/"/>'> Trang chủ</a></li>
+				<li class="app-sidebar__heading">Chức năng admin</li>
+				<li><a href='<c:url value="/admin/users"/>'> Quản lý người dùng </a></li>
+				<li><a href='<c:url value="/admin/products"/>'> Quản lý sản phẩm </a></li>
+				<li><a href='<c:url value="/admin/books"/>'> Đơn hàng </a></li>
+				<li><a href='<c:url value="/admin/report"/>'> Báo cáo thống kê </a></li>
+				
 				<li class="app-sidebar__heading">Thông tin đăng nhập</li>
 				
 				<li>
@@ -31,15 +39,6 @@
 						Đăng xuất
 					</a>
 				</li>
-				
-				<li class="app-sidebar__heading">Mobile shop</li>
-				<li><a class="mm-active" href='<c:url value="/"/>'> Trang chủ</a></li>
-				<li class="app-sidebar__heading">Chức năng admin</li>
-				<li><a href='<c:url value="/admin/users"/>'> Quản lý người dùng </a></li>
-				<li><a href='<c:url value="/admin/products"/>'> Quản lý sản phẩm </a></li>
-				<li><a href='<c:url value="/admin/books"/>'> Đơn hàng </a></li>
-				<li><a href='<c:url value="/admin/report"/>'> Báo cáo thống kê </a></li>
-
 			</ul>
 		</div>
 	</div>

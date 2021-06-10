@@ -131,8 +131,8 @@
 								<select class="form-control" name="paymentMethod" id="paymentMethod"
 									style="margin-bottom: 0px; float: right;">
 									<!--  position: absolute; float: 0 -->
-									<option value="1">Chuyển khoản</option>
-									<option value="2">Thanh toán khi nhận hàng</option>
+									<option value="Chuyển khoản">Chuyển khoản</option>
+									<option value="Thanh toán khi nhận hàng">Thanh toán khi nhận hàng</option>
 	
 								</select>
 							</div>

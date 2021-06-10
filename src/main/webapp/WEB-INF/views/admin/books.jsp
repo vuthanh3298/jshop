@@ -39,10 +39,12 @@
 
 				<th scope="col">Mã SP</th>
 				<th scope="col">Tên SP</th>
-				<th scope="col">Đơn vị tính</th>
+				<th scope="col">Khách hàng</th>
+				<th scope="col">Số điện thoại</th>
+				<th scope="col">Đ/c giao hàng</th>
 				<th scope="col">Số lượng</th>
 				<th scope="col">Giá</th>
-				<th scope="col">Đ/c giao hàng</th>
+				
 				<th scope="col">Thời gian </th>
 				<th scope="col">Thành tiền </th>
 				<th scope="col">Phương thức thanh toán</th>
@@ -57,12 +59,15 @@
 				<tr style="font-size: 13px; font-family: thin">
 					<th scope="col">${book.productId}</th>
 					<th scope="col">${book.name}</th>
-					<th scope="col">${book.unit}</th>
+					<th scope="col">${book.username}</th>
+					
+					<th scope="col">${book.phone}</th>
+					<th scope="col">${book.address}</th>
 					<th scope="col">${book.amount}</th>
 					<th scope="col">
 						<fmt:formatNumber value = "${book.price}" type = "currency" currencyCode="VND" maxFractionDigits="0"/>
 					</th>
-					<th scope="col">${book.address}</th>
+					
 					<th scope="col">${book.time}</th>
 
 					<th scope="col">

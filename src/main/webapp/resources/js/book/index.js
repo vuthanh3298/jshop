@@ -15,10 +15,8 @@ function convertTime(time) {
 $(document).ready(function () {
   $(".btn-update-book").click(function () {
     const id = $(this).attr("data");
-    /*const arrId = id.split("~");*/
-   /* const productId = arrId[0];
-    const userId = arrId[1];
-    const time = arrId[2];*/
+    const arrId = id.split("~");
+    const time = arrId[2];
     $.ajax({
       url: `/api/book/${id}`,
       type: "GET",
@@ -27,7 +25,7 @@ $(document).ready(function () {
       success: function (result) {
         if (result !== null) {
           
-          $("#time").val(convertTime(result.time));
+          $("#time").val(time);
           $("#productId").val(result.productId);
           $("#userId").val(result.userId);
           $("#name").val(result.name);
@@ -35,7 +33,7 @@ $(document).ready(function () {
           $("#address").val(result.address);//don vi tinh
           $("#paymentMethods").val(result.paymentMethods);
           $("#note").val(result.note);
-
+		 
          
         }
       },

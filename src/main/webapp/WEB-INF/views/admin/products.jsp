@@ -39,7 +39,6 @@
 				<th scope="col">tên hàng</th>
 				<th scope="col">loại hàng</th>
 				<th scope="col">hãng sản xuất</th>
-				<th scope="col">đơn vị tính</th>
 				<th scope="col">thời gian bảo hành</th>
 				<th scope="col">số lượng tồn kho</th>
 				<th scope="col">Mô tả</th>
@@ -54,12 +53,13 @@
 					<th scope="col">${product.name}</th>
 					<th scope="col">${product.type}</th>
 					<th scope="col">${product.manufacturer}</th>
-					<th scope="col">${product.unit}</th>
 
 					<th scope="col">${product.warrantyPeriod}</th>
 					<th scope="col">${product.inventory}</th>
 					<th scope="col">${product.described}</th>
-					<th scope="col">${product.price}</th>
+					<th scope="col">
+						<fmt:formatNumber value = "${product.price}" type = "currency" currencyCode="VND" maxFractionDigits="0"/>
+					</th>
 
 					<th>
 						<div style="display: inline-flex;">
@@ -122,31 +122,19 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-3 col-form-label">Đơn vị tính</label>
-						<div class="col-sm-9">
-							<select class="form-control" name="position" id="position" style="margin-bottom: 0px; float: right;"><!--  position: absolute; float: 0 -->
-	                             <!-- quyền -->
-	                                 <option value="1" >Cái</option>
-	                                 <option value="10" >Chục cái</option>
-	                                 <option value="20" >Trăm cái</option>
-	                        
-	                         </select>
-						</div>
-					</div>
-					<div class="form-group row">
 						<label class="col-sm-3 col-form-label">Thời gian bảo hành</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="warrantyPeriod"
 								name="warrantyPeriod">
 						</div>
 					</div>
-					<!-- <div class="form-group row">
-						<label class="col-sm-3 col-form-label">Số lượng hàng tồn</label>// tự cập nhật
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Số lượng hàng tồn</label>
 						<div class="col-sm-9">
 							<input type="text" class="form-control" id="inventory"
 								name="inventory">
 						</div>
-					</div> -->
+					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 col-form-label">Mô tả</label>
 						<div class="col-sm-9">

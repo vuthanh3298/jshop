@@ -57,6 +57,9 @@ public class BookService {
 		BookModel book = this.getBook(params);
 		
 		if(book != null) {
+			bookModel.setProductId(book.getProductId());
+			bookModel.setUserId(book.getUserId());
+			bookModel.setTime(book.getTime());
 			bookMapper.updateOne(bookModel);
 		} else {
 			bookMapper.saveOne(bookModel);
@@ -76,11 +79,19 @@ public class BookService {
 		for (String cartId : cartIdArr) {
 			CartModel cartModel = cartService.getOne(cartId);
 			saveBooks(orderCartDto, cartModel, userId);
+			
+			updateInventory(cartModel);
 		}
 		
 		for (String cartId : cartIdArr) {
 			cartService.deleteCartById(cartId);
 		}
+	}
+
+	private void updateInventory(CartModel cartModel) throws Exception {
+		ProductModel productModel = productService.getProduct(cartModel.getProductId());
+		productModel.setInventory(productModel.getInventory() - cartModel.getAmount());
+		productService.saveOrUpdateProduct(productModel);
 	}
 
 	private void saveBooks(OrderCartDto orderCartDto, CartModel cartModel, String userId) throws Exception {
