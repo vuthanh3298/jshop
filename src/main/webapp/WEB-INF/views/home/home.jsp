@@ -112,7 +112,7 @@
 											<div class="row">
 												<c:forEach var="productsNewItem" items="${productsNew}">
 													<div class="col-xl-3 col-lg-3 col-md-6">
-														<a class="small" href="<c:url value='/detail'/>">
+														<a class="small" href="<c:url value='/product-detail/${productsNewItem.productId}'/>">
 															<div class="single-profile mb-30"
 																style="background-color: white; border-radius: 0px 0px 10px 10px; border: 1px solid #BDBDBD;">
 																<!-- Front -->

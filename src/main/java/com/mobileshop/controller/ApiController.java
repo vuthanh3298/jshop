@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mobileshop.dto.ReportDto;
 import com.mobileshop.model.BookModel;
 import com.mobileshop.model.ProductModel;
 import com.mobileshop.model.UserModel;
 import com.mobileshop.service.BookService;
 import com.mobileshop.service.ProductService;
+import com.mobileshop.service.ReportService;
 import com.mobileshop.service.UserService;
 
 @RestController
@@ -29,6 +31,8 @@ public class ApiController {
 	ProductService productService;
 	@Autowired
 	BookService bookService;
+	@Autowired
+	ReportService reportService;
 
 	@GetMapping("/user/{id}")
 	public ResponseEntity<?> getUser(@PathVariable String id) {
@@ -112,5 +116,19 @@ public class ApiController {
 			return ResponseEntity.status(500).body(null);
 		}
 
+	}
+	@GetMapping("/report/{year}")
+	public ResponseEntity<?> getReport(@PathVariable int year) {
+		try {
+			ReportDto reportDto = new ReportDto();
+			reportDto = reportService.getReport(year);
+			
+			
+			return ResponseEntity.ok(reportDto);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return ResponseEntity.status(500).body(null);
+		}
+		
 	}
 }

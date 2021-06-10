@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mobileshop.mapper.ReportMapper">
+    <select id="getRevenueByMonthOfYearNow" parameterType="int" resultMap="result">
+		select month(time) month ,sum(amount * price) prices from book 
+		where year(time) = #{year}
+		group by month(time)
+		order by month(time) asc
+    </select>
+    
+    <select id="getQuarterlyRevenueOfTheYear" parameterType="int" resultMap="result2">
+		SELECT 
+		    q1.doanhthu doanh_thu_quy_1,
+		    q2.doanhthu doanh_thu_quy_2,
+		    q3.doanhthu doanh_thu_quy_3, 
+		    q4.doanhthu doanh_thu_quy_4
+		FROM
+		   (select sum(amount * price) doanhthu from book where month(time) &lt;= 3 and year(time) = #{year}) as q1
+		   ,(select sum(amount * price) doanhthu from book where 3 &lt; month(time) and month(time) &lt;= 6 and year(time) = #{year}) as q2
+			,(select sum(amount * price) doanhthu from book where 6 &lt; month(time) and month(time) &lt;= 9 and year(time) = #{year}) as q3
+			,(select sum(amount * price) doanhthu from book where 9 &lt; month(time) and month(time) &lt;= 12 and year(time) = #{year}) as q4
+
+    </select>
+    
+    <resultMap id = "result" type = "com.mobileshop.dto.ReportByMonthDto">
+       <result property = "month" column = "month"/>
+       <result property = "prices" column = "prices"/>
+    </resultMap>
+    
+    <resultMap id = "result2" type = "com.mobileshop.dto.ReportByQuy">
+       <result property = "q1" column = "doanh_thu_quy_1"/>
+       <result property = "q2" column = "doanh_thu_quy_2"/>
+       <result property = "q3" column = "doanh_thu_quy_3"/>
+       <result property = "q4" column = "doanh_thu_quy_4"/>
+    </resultMap>
+     
+</mapper>
