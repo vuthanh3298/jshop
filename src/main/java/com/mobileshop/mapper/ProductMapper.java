@@ -25,5 +25,7 @@ public interface ProductMapper {
 	public List<ProductModel> search(String condition) throws Exception;
 
 	public List<ProductModel> searchAtHome(SearchDto searchDto) throws Exception;
+	
+	public List<ProductModel> getProductsInStock() throws Exception;// ton kho
 
 }

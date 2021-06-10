@@ -18,6 +18,9 @@
     <select id="getProduct" parameterType="String" resultMap="result">
         SELECT * FROM PRODUCT where PRODUCT_ID = #{id};
     </select>
+    <select id="getProductsInStock" parameterType="String" resultMap="result">
+        SELECT * FROM PRODUCT where 1=1 and INVENTORY >0;
+    </select>
     <insert id="saveOne" parameterType="com.mobileshop.model.ProductModel">
      INSERT INTO PRODUCT (PRODUCT_ID, NAME, TYPE, MANUFACTURER, UNIT, WARRANTY_PERIOD, INVENTORY, DESCRIBED, PRICE, URL_IMG, AVATAR) 
      VALUES (#{productId},#{name},#{type},#{manufacturer},#{unit},#{warrantyPeriod},#{inventory},#{described},#{price}, #{urlImg}, #{avatar});

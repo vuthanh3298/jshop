@@ -150,6 +150,17 @@ public class AdminController {
 	public String report(ModelMap modelMap) throws IOException {
 		int year = Calendar.getInstance().get(Calendar.YEAR);
 		modelMap.put("year", year);
+		
+		try {
+			List<ProductModel> products;
+			products = productService.getProductsInStock();
+			modelMap.put("products", products);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		return "admin/report";
 	}
 }

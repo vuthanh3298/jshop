@@ -11,6 +11,7 @@
 		<mapper resource="com/mobileshop/mapper/sql/Cart.xml" />
 		<mapper resource="com/mobileshop/mapper/sql/Manufacturer.xml" />
 		<mapper resource="com/mobileshop/mapper/sql/FileMapper.xml" />
+		<mapper resource="com/mobileshop/mapper/sql/Report.xml" />
 	</mappers>
 
 </configuration>

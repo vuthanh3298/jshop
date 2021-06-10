@@ -73,5 +73,9 @@ public class ProductService {
 		
 		return productMapper.searchAtHome(searchDto);
 	}
+	public List<ProductModel> getProductsInStock() throws Exception{
+		
+		return productMapper.getProductsInStock();
+	}
 
 }
