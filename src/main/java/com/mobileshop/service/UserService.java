@@ -43,6 +43,10 @@ public class UserService {
 		if(user != null) {
 			usersMapper.updateOne(userModel);
 		} else {
+			// default password
+			String password = EncodedPasswordUtil.encode("123");
+			userModel.setPassword(password);
+			
 			usersMapper.saveOne(userModel);
 		}
 	}

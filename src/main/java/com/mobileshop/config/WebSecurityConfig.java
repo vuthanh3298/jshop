@@ -53,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             	.passwordParameter("password")
 //            	.successHandler(authenticationSuccessHandler)
             	//.defaultSuccessUrl("/login-success")
-            	.failureUrl("/signin?message=Invalid Email or Password")
+            	.failureUrl("/signin?message=InvalidEmailOrPassword")
             	.and()
             .logout()
             	.permitAll()

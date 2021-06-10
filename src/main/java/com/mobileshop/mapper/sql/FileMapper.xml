@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.mobileshop.mapper.FileMapper">
+   
+	<insert id="insert" parameterType="com.mobileshop.model.FileModel" useGeneratedKeys="true" keyProperty="id" >
+		INSERT INTO FILES (
+			name,
+			type,
+			data
+		) values (
+			#{name},
+			#{type},
+			#{data}
+		)
+	</insert>
+     
+	<select id="selectOne" parameterType="Integer" resultMap="result" >
+	    select * from FILES
+		where id = #{id}
+	</select>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM FILES WHERE id = #{id}
+	</delete>
+    
+    <resultMap id = "result" type = "com.mobileshop.model.FileModel">
+       <result property = "id" column = "ID"/>
+       <result property = "name" column = "NAME"/>
+       <result property = "type" column = "TYPE"/>
+       <result property = "data" column = "DATA"/>
+    </resultMap>
+</mapper>

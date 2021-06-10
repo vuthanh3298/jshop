@@ -94,7 +94,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form action="<c:url value="/admin/product"/>" method="post">
+			<form id="form-product-save" action="<c:url value="/admin/product"/>" method="post">
 				<div class="modal-body">
 					<div class="form-group row">
 						<label for="courses-name" class="col-sm-3 col-form-label">Mã hàng:</label>
@@ -149,9 +149,16 @@
 								name="price">
 						</div>
 					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Hình ảnh</label>
+						<div class="col-sm-9">
+							<input type="file" class="form-control" id="imgs"
+								name="imgs" multiple>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Lưu</button>
+					<button id="btn-save-product" type="submit" class="btn btn-primary">Lưu</button>
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Hủy</button>
 				</div>

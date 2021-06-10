@@ -24,12 +24,11 @@ $(document).ready(function () {
           $("#name").val(result.name);
           $("#type").val(result.type);
           $("#manufacturer").val(result.manufacturer);
-          $("#position").val(result.position);//don vi tinh
+          $("#position").val(result.position); //don vi tinh
           $("#warrantyPeriod").val(result.warrantyPeriod);
           $("#described").val(result.described);
           $("#price").val(result.price);
- 		  $("#inventory").val(result.inventory);
-         
+          $("#inventory").val(result.inventory);
         }
       },
     });
@@ -51,5 +50,35 @@ $(document).ready(function () {
         }
       },
     });
+  });
+
+  $("#btn-save-product").on("click", function (e) {
+    e.preventDefault();
+
+    let form = new FormData();
+    let files = document.querySelector("#imgs").files;
+
+    if (files.length) {
+      for (let file of files) {
+        form.append("multipartFiles", file);
+      }
+
+      debugger;
+
+      $.ajax({
+        url: "/api/file/",
+        type: "POST",
+        contentType: "multipart/form-data",
+        processData: false,
+        data: form,
+        success: function (result) {
+          if (result.length) {
+            console(result);
+          }
+        },
+      });
+    }
+
+    $("#form-product-save").submit();
   });
 });
