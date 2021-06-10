@@ -3,19 +3,6 @@
 <%@include file="../taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <div class="app-sidebar sidebar-shadow " style="margin-top: none;">
-	<div class="app-header__logo">
-		<div class="logo-src"></div>
-		<div class="header__pane ml-auto">
-			<div>
-				<button type="button"
-					class="hamburger close-sidebar-btn hamburger--elastic"
-					data-class="closed-sidebar">
-					<span class="hamburger-box"> <span class="hamburger-inner"></span>
-					</span>
-				</button>
-			</div>
-		</div>
-	</div>
 	<div class="app-header__mobile-menu">
 		<div>
 			<button type="button"
@@ -36,6 +23,15 @@
 	<div class="scrollbar-sidebar">
 		<div class="app-sidebar__inner">
 			<ul class="vertical-nav-menu">
+				<li class="app-sidebar__heading">Thông tin đăng nhập</li>
+				
+				<li>
+					<a><strong><sec:authentication property="principal.username" /></strong></a>
+					<a href="<c:url value='/logout'/>" title="logout">
+						Đăng xuất
+					</a>
+				</li>
+				
 				<li class="app-sidebar__heading">Mobile shop</li>
 				<li><a class="mm-active" href='<c:url value="/"/>'> Trang chủ</a></li>
 				<li class="app-sidebar__heading">Chức năng admin</li>

@@ -26,13 +26,13 @@
 <body>
 	<div
 		class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-		<%@ include file="../common/admin/header.jsp"%>
+		<%-- <%@ include file="../common/admin/header.jsp"%> --%>
 		<div class="app-main" style="padding-top: 0px;">
 			<%@ include file="../common/admin/menu.jsp"%>
 			<div class="app-main__outer">
 				<div class="app-main__inner">
 					<div class="">
-						<div class="page-title-wrapper" style="margin-top: 50px;">
+						<div class="page-title-wrapper">
 							<sitemesh:write property="body" />
 						</div>
 					</div>

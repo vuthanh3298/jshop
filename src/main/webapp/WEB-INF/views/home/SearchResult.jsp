@@ -2,15 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../../common/taglib.jsp"%>
 <main>
-	<style>
-#main-image>div>div {
-	overflow: visible;
-}
 
-#main-image ul {
-	height: 250px;
-	overflow: auto !important;
-}
+<style>
+	#main-image>div>div {
+		overflow: visible;
+	}
+	
+	#main-image ul {
+		height: 250px;
+		overflow: auto !important;
+	}
 </style>
 
 
@@ -23,9 +24,9 @@
 			<h2 class="card-title" style="color: blue">>Kết quả tìm kiếm</h2>
 			<h3 style="color: blue;"></h3>
 			<div class="row">
-				<c:forEach var="product" items="${products}">
+				<c:forEach var="product" items="${productModels}">
 					<div class="col-xl-3 col-lg-3 col-md-6">
-						<a class="small" href="<c:url value='/detail'/>">
+						<a class="small" href="<c:url value='/product-detail/${product.productId}'/>">
 							<div class="single-profile mb-30"
 								style="background-color: white; border-radius: 10px 10px 10px 10px;">
 								<!-- Front -->
@@ -39,7 +40,9 @@
 									<div class="profile-caption"
 										style="margin-left: 5px; margin-right: 5px;">
 										<h6 class="title" style="color: black;">${product.name}</h6>
-										<p style="color: blue; font-size: 12px;">Giá: ${product.price}</p>
+										<h5 style="color: blue;">
+											<fmt:formatNumber value = "${product.price}" type = "currency" currencyCode="VND" maxFractionDigits="0"/>
+										</h5>
 									</div>
 								</div>
 							</div>
