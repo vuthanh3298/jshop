@@ -2,20 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../taglib.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<div class="app-header header-shadow">
-	<div class="app-header__logo">
-		<div class="logo-src"></div>
-		<div class="header__pane ml-auto">
-			<div>
-				<button type="button"
-					class="hamburger close-sidebar-btn hamburger--elastic"
-					data-class="closed-sidebar">
-					<span class="hamburger-box"> <span class="hamburger-inner"></span>
-					</span>
-				</button>
-			</div>
-		</div>
-	</div>
+<div class="app-header header-shadow" style="z-index: 5 !important;">
+	
 	<div class="app-header__mobile-menu">
 		<div>
 			<button type="button"

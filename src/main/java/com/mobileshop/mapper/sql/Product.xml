@@ -48,6 +48,31 @@
     	<bind name="pattern" value="'%' + condition + '%'" />
         SELECT * FROM PRODUCT where PRODUCT_ID LIKE #{pattern} OR NAME LIKE #{pattern};
     </select>
+
+    <select id="searchAtHome" parameterType="com.mobileshop.dto.SearchDto" resultMap="result">
+    	<bind name="pattern" value="'%' + condition + '%'" />
+        SELECT 
+        	* 
+        FROM 
+        	PRODUCT 
+		WHERE 1 = 1
+			<if test="condition != null">
+	    		AND NAME like #{pattern}
+	    	</if>
+	    	
+	    	<if test="minPrice != -1">
+	    		AND PRICE >= #{minPrice}
+	    	</if>
+	    	
+	    	<if test="maxPrice != -1">
+	    		AND #{maxPrice} >= PRICE
+	    	</if>
+
+	    	<if test="manufacturer != -1">
+	    		AND MANUFACTURER = #{}
+	    	</if>
+			
+    </select>
     
     <resultMap id = "result" type = "com.mobileshop.model.ProductModel">
        <result property = "productId" column = "PRODUCT_ID"/>

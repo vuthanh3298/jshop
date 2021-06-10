@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mobileshop.dto.SearchDto;
 import com.mobileshop.mapper.ProductMapper;
 import com.mobileshop.model.ProductModel;
 
@@ -61,6 +62,11 @@ public class ProductService {
 
 	public List<ProductModel> search(String condition) throws Exception {
 		return productMapper.search(condition);
+	}
+
+	public List<ProductModel> searchAtHome(SearchDto searchDto) throws Exception{
+		
+		return productMapper.searchAtHome(searchDto);
 	}
 
 }

@@ -108,7 +108,7 @@
 															<div class="single-profile mb-30"
 																style="background-color: white; border-radius: 0px 0px 10px 10px; border: 1px solid #BDBDBD;">
 																<!-- Front -->
-																<div class="single-profile-front" style="height: 350px;">
+																<div class="single-profile-front" style="height: 400px;">
 																	<div class="profile-img">
 																		<img style="height: 250px;"
 																			src="<c:url value="/resources/img/1.jpg"/>" alt=""
@@ -116,14 +116,16 @@
 
 																	</div>
 																	<div class="row profile-caption ">
-																		<div class="col-xl-5 col-lg-5 col-md-5"
-																			style="margin-left: 5px; margin-right: 5px;">
+																		<div class="col-xl-12 col-lg-12 col-md-12" style="text-align: left; margin-left: 5px;">
 																			<h6 class="title" style="color: black;">${productsNewItem.name}</h6>
-																			<p style="color: blue; font-size: 12px;">Giá:
-																				${productsNewItem.price}</p>
-
 																		</div>
-																		<div class=" col-xl-6 col-lg-6 col-md-6"
+																		<div class="col-xl-8 col-lg-8 col-md-8"
+																			style="margin-left: 5px; margin-right: 5px;">
+																			<h5 style="color: blue;">
+																				<fmt:formatNumber value = "${productsNewItem.price}" type = "currency" currencyCode="VND" maxFractionDigits="0"/>
+																			</h5>
+																		</div>
+																		<div class=" col-xl-3 col-lg-3 col-md-3"
 																			style="text-align: right;">
 																			<svg style="color: #ff656a; width: 50px; height: 50px;" xmlns="http://www.w3.org/2000/svg" width="16"
 																				height="16" fill="currentColor"
@@ -132,6 +134,7 @@
 																			</svg>
 																			<!-- <button type="submit" class="send-btn">Mua</button> -->
 																		</div>
+																		
 																	</div>
 
 																</div>

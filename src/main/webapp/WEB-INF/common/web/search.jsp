@@ -17,23 +17,23 @@
 
 								<div class="form-wrapper"
 									style="background: rgba(255, 248, 153, 0.424); border: 2px solid #cc0000; border-radius: 10px; padding: 15px; margin: 20px;">
-									<form action="<c:url value='/search'/>" method="GET">
+									<form action="<c:url value='/search'/>" method="POST">
 										<div class="row">
 											<div class="col-lg-2 col-md-2">
 												<div class="select-itms">
-													<select name="giaThapNhat" id="giaThapNhat"
+													<select name="manufacturer" id="manufacturer"
 														style="display: none;">
 														<option value="-1">Hãng</option>
 														<option value="all">Tất cả</option>
 														<c:forEach var="manufacturer" items="${manufacturers}">
-															<option value="${manufacturer.id }">${manufacturer.name }</option>
+															<option value="${manufacturer.id}">${manufacturer.name}</option>
 														</c:forEach>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-2 col-md-2">
 												<div class="select-itms">
-													<select name="giaThapNhat" id="giaThapNhat"
+													<select name="minPrice" id="minPrice"
 														style="display: none;">
 														<option value="-1">Giá thấp nhất</option>
 														<option value="1000000">0</option>
@@ -49,7 +49,7 @@
 
 											<div class="col-lg-2 col-md-2">
 												<div class="select-itms">
-													<select name="giaCaoNhat" id="giaCaoNhat"
+													<select name="maxPrice" id="maxPrice"
 														style="display: none;">
 														<option value="-1">Giá cao nhất</option>
 														<option value="1000000">1 Triệu</option>
@@ -64,7 +64,7 @@
 											</div>
 											<div class="col-lg-4 col-md-4 mb-4">
 												<div class="form-box">
-													<input type="text" name="tuKhoa" placeholder="Từ khoá">
+													<input type="text" name="condition" placeholder="Từ khoá">
 												</div>
 											</div>
 
@@ -75,13 +75,7 @@
 										</div>
 									</form>
 								</div>
-
-
-
-
-
 							</div>
-
 						</div>
 					</div>
 				</div>
