@@ -102,6 +102,8 @@ public class HomeController {
 			long oldPrice = productModel.getPrice() + ((new Random()).nextInt(500 - 1) + 500) * 1000;
 			modelMap.put("oldPrice", oldPrice);
 			
+			modelMap.put("urlImgs", productModel.getUrlImg().split("~"));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

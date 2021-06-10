@@ -42,9 +42,17 @@
 																<!-- Front -->
 																<div class="single-profile-front" style="height: 400px;">
 																	<div class="profile-img">
-																		<img style="height: 250px;"
-																			src="<c:url value="/resources/img/1.jpg"/>" alt=""
-																			style="border-radius: 10px;">
+																	
+																		<c:if test="${empty productHot.avatar}">
+																			<img style="height: 250px;"
+																				src="<c:url value="/resources/img/1.jpg"/>" alt=""
+																				style="border-radius: 10px;">
+																		</c:if>
+																		<c:if test="${not empty productHot.avatar}">
+																			<img style="height: 250px;"
+																				src="${productHot.avatar}" alt=""
+																				style="border-radius: 10px;">
+																		</c:if>
 
 																	</div>
 																	<div class="row profile-caption " style="margin-top: 10px;">
@@ -110,10 +118,16 @@
 																<!-- Front -->
 																<div class="single-profile-front" style="height: 400px;">
 																	<div class="profile-img">
-																		<img style="height: 250px;"
-																			src="<c:url value="/resources/img/1.jpg"/>" alt=""
-																			style="border-radius: 10px;">
-
+																		<c:if test="${empty productsNew.avatar}">
+																			<img style="height: 250px;"
+																				src="<c:url value="/resources/img/1.jpg"/>" alt=""
+																				style="border-radius: 10px;">
+																		</c:if>
+																		<c:if test="${not empty productsNew.avatar}">
+																			<img style="height: 250px;"
+																				src="${productsNew.avatar}" alt=""
+																				style="border-radius: 10px;">
+																		</c:if>
 																	</div>
 																	<div class="row profile-caption ">
 																		<div class="col-xl-12 col-lg-12 col-md-12" style="text-align: left; margin-left: 5px;">

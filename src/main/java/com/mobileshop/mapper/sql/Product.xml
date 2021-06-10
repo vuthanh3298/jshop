@@ -19,8 +19,8 @@
         SELECT * FROM PRODUCT where PRODUCT_ID = #{id};
     </select>
     <insert id="saveOne" parameterType="com.mobileshop.model.ProductModel">
-     INSERT INTO PRODUCT (PRODUCT_ID, NAME, TYPE, MANUFACTURER, UNIT, WARRANTY_PERIOD, INVENTORY, DESCRIBED, PRICE) 
-     VALUES (#{productId},#{name},#{type},#{manufacturer},#{unit},#{warrantyPeriod},#{inventory},#{described},#{price});
+     INSERT INTO PRODUCT (PRODUCT_ID, NAME, TYPE, MANUFACTURER, UNIT, WARRANTY_PERIOD, INVENTORY, DESCRIBED, PRICE, URL_IMG, AVATAR) 
+     VALUES (#{productId},#{name},#{type},#{manufacturer},#{unit},#{warrantyPeriod},#{inventory},#{described},#{price}, #{urlImg}, #{avatar});
     </insert>
     
      <update id="updateOne" parameterType="com.mobileshop.model.ProductModel">
@@ -84,5 +84,7 @@
        <result property = "inventory" column = "INVENTORY"/>
        <result property = "described" column = "DESCRIBED"/>
        <result property = "price" column = "PRICE"/>
+       <result property = "urlImg" column = "URL_IMG"/>
+       <result property = "avatar" column = "AVATAR"/>
     </resultMap>
 </mapper>

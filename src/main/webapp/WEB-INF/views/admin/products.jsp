@@ -152,10 +152,16 @@
 					<div class="form-group row">
 						<label class="col-sm-3 col-form-label">Hình ảnh</label>
 						<div class="col-sm-9">
-							<input type="file" class="form-control" id="imgs"
-								name="imgs" multiple>
+							<input type="file" class="form-control" id="imgs" multiple>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label"></label>
+						<div class="col-sm-9">
+							<button id="btn-save-imgs" type="button" class="btn btn-primary">Lưu hình</button>
+						</div>
+					</div>
+					<input id="imgs-save" hidden="true" name="urlImg"/>
 				</div>
 				<div class="modal-footer">
 					<button id="btn-save-product" type="submit" class="btn btn-primary">Lưu</button>

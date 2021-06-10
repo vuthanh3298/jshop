@@ -24,12 +24,12 @@
                             <div class="col-xl-1 col-lg-1"></div>
                             <div class="offset-xl-1 offset-lg-1 col-xl-8 col-lg-8">
                                 <div class="h1-testimonial-active">
-                                    <c:forEach var="i" begin="1" end="4">
+                                    <c:forEach var="urlImg" items="${urlImgs}">
                                         <div class="single-testimonial pt-65">
                                             <div class="single-profile-front">
                                                 <div class="profile-img">
 
-                                                    <img src="<c:url value=" /resources/img/1.jpg "/>" alt="" style="width: 100%; height: 400px;; border-radius: 10px 10px 10px 10px; border: 1px solid #BDBDBD;">
+                                                    <img src="${urlImg}" alt="" style="width: 100%; height: 400px;; border-radius: 10px 10px 10px 10px; border: 1px solid #BDBDBD;">
                                                 </div>
                                                 <div class="profile-caption"></div>
                                             </div>

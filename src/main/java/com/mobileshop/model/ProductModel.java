@@ -18,5 +18,6 @@ public class ProductModel {
 	private int inventory;
 	private String described;
 	private long price;
-
+	private String urlImg;
+	private String avatar;
 }

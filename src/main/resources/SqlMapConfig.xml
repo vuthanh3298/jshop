@@ -10,6 +10,7 @@
 		<mapper resource="com/mobileshop/mapper/sql/Book.xml" />
 		<mapper resource="com/mobileshop/mapper/sql/Cart.xml" />
 		<mapper resource="com/mobileshop/mapper/sql/Manufacturer.xml" />
+		<mapper resource="com/mobileshop/mapper/sql/FileMapper.xml" />
 	</mappers>
 
 </configuration>

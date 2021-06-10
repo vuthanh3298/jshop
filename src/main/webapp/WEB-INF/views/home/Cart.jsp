@@ -30,14 +30,14 @@
 							<div class="row">
 								<div class="col-xl-4 col-lg-4" >
 									<input class="checkbox-cart-product" cartId="${product.cartId}" type="checkbox" style="position: absolute; top: 10px; left: -10px;"/>
-									<a class="small" href="<c:url value='/detail'/>" style="display: inline-block;">
+									<a class="small" href="<c:url value='/product-detail/${product.productId}'/>" style="display: inline-block;">
 										<div class="single-profile mb-30"
 											style="background-color: white; border-radius: 0px 0px 10px 10px; border: 1px solid #BDBDBD;">
 											<!-- Front -->
 											<div class="single-profile-front" style="height: 350px;">
 												<div class="profile-img">
 													<img style="height: 250px;"
-														src="<c:url value="/resources/img/1.jpg"/>" alt=""
+														src="${product.avatar}" alt=""
 														style="border-radius: 10px;">
 
 												</div>

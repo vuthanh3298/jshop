@@ -44,6 +44,11 @@ public class ProductService {
 			System.out.println("ERROR: Miss Product PK");
 			throw new Exception();
 		}
+		String url = productModel.getUrlImg();
+		if(url != null && !url.isEmpty()) {
+			productModel.setAvatar(url.split("~")[0]);
+		}
+		
 		ProductModel product = this.getProduct(productModel.getProductId());
 
 		// get roleName => set for position in user table

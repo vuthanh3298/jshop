@@ -52,9 +52,7 @@ $(document).ready(function () {
     });
   });
 
-  $("#btn-save-product").on("click", function (e) {
-    e.preventDefault();
-
+  $("#btn-save-imgs").on("click", function () {
     let form = new FormData();
     let files = document.querySelector("#imgs").files;
 
@@ -68,17 +66,16 @@ $(document).ready(function () {
       $.ajax({
         url: "/api/file/",
         type: "POST",
-        contentType: "multipart/form-data",
+        contentType: false,
         processData: false,
         data: form,
         success: function (result) {
           if (result.length) {
-            console(result);
+            const urls = result.join("~");
+            $("#imgs-save").val(urls);
           }
         },
       });
     }
-
-    $("#form-product-save").submit();
   });
 });
