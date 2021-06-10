@@ -28,7 +28,7 @@ $(document).ready(function () {
           $("#warrantyPeriod").val(result.warrantyPeriod);
           $("#described").val(result.described);
           $("#price").val(result.price);
-
+ 		  $("#inventory").val(result.inventory);
          
         }
       },

@@ -14,15 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobileshop.model.UserModel;
 import com.mobileshop.service.UserService;
+import com.mobileshop.util.MessageUtil;
 
 @Controller
 public class SignInSignUpController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	MessageUtil messageUtil;
 
 	@GetMapping(value="/signin")
-	public String signin(HttpServletResponse response) throws IOException{
+	public String signin(@RequestParam(value = "message", required = false) String message, ModelMap modelMap) throws IOException{
+		if(message != null) {
+			modelMap.put("message", messageUtil.getMessage(message));
+		}
 		return "signinsignup/SignIn";
 	}
 	@GetMapping(value="/signup")
@@ -43,8 +50,14 @@ public class SignInSignUpController {
 	
 	@PostMapping("/signup")
 	public String signup(@ModelAttribute UserModel userModel) throws Exception {
-		userService.saveOne(userModel);
-		return "redirect:/signin";
+		try {
+			userService.saveOne(userModel);
+			return "redirect:/signin?message=signup-success";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/signup";
 	}
 }
 

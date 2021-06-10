@@ -7,35 +7,37 @@
     </select>
     
     <select id="getAllBookTable" resultMap="resultTable">
-        select b.*,p.NAME, p.UNIT, p.PRICE  from PRODUCT as p, BOOK as b where p.PRODUCT_ID = b.PRODUCT_ID;
+        SELECT b.*,p.NAME, p.UNIT, p.PRICE, u.NAME USERNAME from PRODUCT as p, BOOK as b, USER as u
+		where p.PRODUCT_ID = b.PRODUCT_ID and b.USER_ID = u.USER_ID
+		ORDER BY b.TIME DESC;
     </select>
     
     <select id="getBook" resultMap="result" parameterType="map"	>
         select * from BOOK where PRODUCT_ID = #{productId} and USER_ID=#{userId} and TIME = #{time};
     </select>
     
-    <insert id="saveOne" parameterType="com.mobileshop.model.ProductModel">
+    <insert id="saveOne" parameterType="com.mobileshop.model.BookModel">
     	INSERT INTO BOOK (PRODUCT_ID, USER_ID, TIME, AMOUNT, ADDRESS, PAYMENT_METHODS, NOTE) 
     	VALUES (#{productId}, #{userId}, #{time}, #{amount}, #{address}, #{paymentMethods}, #{note});
     </insert>
      
-    <insert id="saveBookByOrder" parameterType="com.mobileshop.model.ProductModel">
+    <insert id="saveBookByOrder" parameterType="com.mobileshop.model.BookModel">
     	INSERT INTO BOOK (PRODUCT_ID, USER_ID, TIME, AMOUNT, ADDRESS, PAYMENT_METHODS, NOTE, PRICE, TOTAL, PHONE) 
     	VALUES (#{productId}, #{userId}, #{time}, #{amount}, #{address}, #{paymentMethods}, #{note}, #{price}, #{total}, #{phone});
     </insert>
      
-    <update id="updateOne" parameterType="com.mobileshop.model.ProductModel">
+    <update id="updateOne" parameterType="com.mobileshop.model.BookModel">
      	UPDATE 
      		BOOK
      	SET
      		AMOUNT = #{amount},
      		ADDRESS = #{address},
      		PAYMENT_METHODS = #{paymentMethods},
-     		NOTE = #{NOTE}
-     	WHERE
-     		PRODUCT_ID = #{productId},
-     		USER_ID = #{userId},
-     		TIME = #{time}
+     		NOTE = #{note}
+     	WHERE 1 = 1
+     		AND PRODUCT_ID = #{productId} 
+     		AND USER_ID = #{userId}
+     		AND TIME = #{time}
      		
     </update>
 
@@ -46,10 +48,10 @@
 
 		<select id="searchBookTable" resultMap="resultTable" parameterType="String">
 			<bind name="pattern" value="'%' + condition + '%'" />
-			SELECT b.*,p.NAME, p.UNIT, p.PRICE from PRODUCT as p, BOOK as b, USER as u
+			SELECT b.*,p.NAME, p.UNIT, p.PRICE, u.NAME USERNAME from PRODUCT as p, BOOK as b, USER as u
 			where p.PRODUCT_ID = b.PRODUCT_ID and b.USER_ID = u.USER_ID
-			and (u.NAME LIKE #{pattern} OR p.NAME LIKE #{pattern});
-
+			and (u.NAME LIKE #{pattern} OR p.NAME LIKE #{pattern})
+			ORDER BY b.TIME DESC;
 		</select>
     
     <resultMap id = "result" type = "com.mobileshop.model.BookModel">
@@ -61,8 +63,9 @@
        <result property = "paymentMethods" column = "PAYMENT_METHODS"/>
        <result property = "note" column = "NOTE"/>
        <result property = "price" column = "PRICE"/>
-       <result property = "total" column = "NOTE"/>
-       <result property = "phone" column = "NOTE"/>
+       <result property = "total" column = "TOTAL"/>
+       <result property = "phone" column = "PHONE"/>
+       
     </resultMap>
     
     <resultMap id = "resultTable" type = "com.mobileshop.model.BookTableModel">
@@ -73,6 +76,9 @@
        <result property = "address" column = "ADDRESS"/>
        <result property = "paymentMethods" column = "PAYMENT_METHODS"/>
        <result property = "note" column = "NOTE"/>
+
+       <result property = "phone" column = "PHONE"/>
+       <result property = "username" column = "USERNAME"/>
        
        <result property = "name" column = "NAME"/>
        <result property = "unit" column = "UNIT"/>

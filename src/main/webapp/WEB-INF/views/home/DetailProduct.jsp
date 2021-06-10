@@ -56,7 +56,11 @@
                     <div class="col-xl-4 col-lg-4" style="margin-top: 100px;">
                         <div class="row" style="margin-bottom: 5px;">
                             <h3 style="color: blue;">${product.name}</h3>
-                            <button class="boxed-btn" style="size: 8px; margin-left: 25px;">Còn hàng</button>
+                            <button class="boxed-btn" style="size: 8px; margin-left: 25px;">
+                            	<c:if test="${product.inventory != 0}"> Còn hàng </c:if>
+                            	<c:if test="${product.inventory == 0}"> Hết hàng </c:if>
+                            	
+                            </button>
                         </div>
 
                         <div class="row" style="background-color: #fafafa;">
@@ -74,7 +78,7 @@
                             <div class="row" style="margin-top: 10px;">
                                 <label class="col-sm-3 col-form-label">Số lượng</label>
                                 <div class="col-sm-3">
-                                    <input type="number" value="1" min="1" class="form-control" id="amount" name="amount">
+                                    <input type="number" value="1" min="1" max="${product.inventory}" class="form-control" id="amount" name="amount">
                                 </div>
                                 <div class=" col-xl-6 col-lg-6 col-md-6" style="text-align: right;">
 
@@ -86,7 +90,7 @@
                                     </sec:authorize>
 
                                     <sec:authorize access="isAuthenticated()">
-                                        <button type="submit" class="send-btn" style="height: 40px;">Mua Ngay</button>
+                                        <button type="submit" class="send-btn" style="height: 40px;" <c:if test="${product.inventory == 0}"> disabled="disabled"</c:if>>Mua Ngay</button>
                                     </sec:authorize>
 
                                 </div>

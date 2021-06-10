@@ -109,7 +109,7 @@ public class AdminController {
 
 	@PostMapping("/book")
 	public String saveOrUpdateBook(@ModelAttribute BookModel bookModel) {
-		if(bookModel.getTime() != null) {
+		if(bookModel.getTime() == null) {
 			LocalDateTime now = LocalDateTime.now();
 			Timestamp timestamp = Timestamp.valueOf(now);
 			bookModel.setTime(timestamp);
