@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mobileshop.model.BookModel;
 import com.mobileshop.model.BookTableModel;
+import com.mobileshop.model.ManufacturerModel;
 import com.mobileshop.model.ProductModel;
 import com.mobileshop.model.RoleModel;
 import com.mobileshop.model.UserModel;
 import com.mobileshop.service.BookService;
+import com.mobileshop.service.ManufacturerService;
 import com.mobileshop.service.ProductService;
 import com.mobileshop.service.RoleService;
 import com.mobileshop.service.UserService;
@@ -39,6 +41,8 @@ public class AdminController {
 	ProductService productService;
 	@Autowired
 	BookService bookService;
+	@Autowired
+	ManufacturerService manufacturerService;
 
 	@RequestMapping(value = "/")
 	public String home(HttpServletResponse response) throws IOException {
@@ -70,6 +74,9 @@ public class AdminController {
 	@GetMapping(value = "/products")
 	public String products(@RequestParam(value = "search", required = false) String condition,ModelMap modelMap) throws IOException {
 		try {
+			
+			List<ManufacturerModel> manufacturers = manufacturerService.getAll();
+			modelMap.put("manufacturers", manufacturers);
 			if (condition == null) {
 				List<ProductModel> products = productService.getAll();
 				modelMap.put("products", products);

@@ -117,8 +117,13 @@
 					<div class="form-group row">
 						<label class="col-sm-3 col-form-label">Hãng sản xuất</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" id="manufacturer"
-								name="manufacturer">
+							<select name="manufacturer" id="manufacturer"
+								style="display: none;">
+								<option value="-1">Hãng</option>
+								<c:forEach var="manufacturer" items="${manufacturers}">
+									<option value="${manufacturer.id}">${manufacturer.name}</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
 					<div class="form-group row">
